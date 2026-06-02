@@ -131,13 +131,7 @@
 \newcommand{\enablerunninghead}{\global\showrunningheadtrue}
 \newcommand{\suppressnextrunninghead}{\global\suppressrunningheadtrue}
 
-% Pre-print watermark — ALWAYS visible, all pages, top right, red
-\AddToShipoutPictureFG{%
-  \AtPageUpperLeft{%
-    \raisebox{-7mm}{\hspace{\dimexpr\paperwidth-10.5mm\relax}%
-      \makebox[0pt][r]{\fontsize{7}{9}\selectfont\color{SERedAccent}%
-        Pre Print Version --- No External Distribution Allowed}}}%
-}
+% Pre-print watermark — REMOVED (final version)
 
 % Running head — conditional, top left, gray (suppressed on chapter/cover pages)
 \AddToShipoutPictureFG{%
