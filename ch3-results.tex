@@ -50,7 +50,7 @@
 
 \vspace{1mm}
 
-\noindent The installed base of 8{,}572 data centers carries \textbf{\$388 billion} in climate-related value at risk---38.3\% of enterprise value under the BAU pathway. With prospective AI infrastructure, exposure rises to \textbf{\$1.0--3.7 trillion}, depending on the growth scenario. Even the most conservative pathway exceeds \$1 trillion. Put differently: the installed-base figure alone is larger than the annual revenue of every listed data center operator combined.
+\noindent The installed base of 8{,}572 data centers carries \textbf{\$388 billion} in climate-related value at risk---38.3\% of enterprise value under the BAU pathway. With prospective AI infrastructure, exposure rises to \textbf{\$1.0--3.7 trillion}, depending on the growth scenario. Even the most conservative pathway exceeds \$1 trillion. To put this in perspective: the installed-base figure alone is larger than the annual revenue of every listed data center operator combined.
 
 This is why ClimVaR should be read as a measure of systematic mispricing. A traditional DCF assumes that cooling costs, carbon prices, outages, and physical damages remain within the historical range embedded in past cash flows. Climate-adjusted DCF removes that assumption. The 38.3\% gap is therefore not a tail event; it is the median repricing implied by the BAU/MEAN pathway.
 
@@ -97,7 +97,7 @@ On the left, seven hazards are ranked by contribution. Tropical wind dominates, 
 
 \noindent On the right, hazards are aggregated into risk channels. Business interruption is the largest channel, ahead of carbon costs, physical damages, and cooling penalties. This matters because the ranking of channels is not the ranking of hazards: a single hazard can contribute to several channels simultaneously, and a single channel can be fed by several hazards at once. Tropical wind, for instance, contributes both to business interruption and to physical damage; extreme heat drives cooling stress through rising ambient temperatures. The map therefore formalizes the non-additivity of climate risk.
 
-This is also why Shapley decomposition is essential to the framework. Without it, one would either double-count the contribution of a hazard that affects several channels, or collapse distinct mechanisms into a single undifferentiated estimate. The analytical gain is considerable. The model does not merely say that climate risk is large; it shows how it is transmitted, through which levers it becomes financially material, and therefore where adaptation can act with the greatest force.
+This is also why Shapley decomposition is essential to the framework. Without it, one would either double-count the contribution of a hazard that affects several channels, or collapse distinct mechanisms into a single undifferentiated estimate---both analytically fatal for adaptation planning. The model does not merely say that climate risk is large; it shows how it is transmitted, through which levers it becomes financially material, and therefore where adaptation can act with the greatest force.
 
 \end{twocolbody}
 
@@ -358,7 +358,7 @@ This has a direct consequence that no sustainability strategy focused on renewab
 
 First, \textit{geographic concentration}: AI facilities cluster in regions combining cheap power with fast permitting---Texas, Virginia, parts of China and Southeast Asia---the same regions with elevated physical climate exposure. The installed base is geographically diverse; AI additions concentrate risk. Second, \textit{power density}: AI racks at 30--100+~kW generate more waste heat per square meter, so that a cooling system failure at a 5~kW/rack legacy facility is an inconvenience, while at a 60~kW/rack AI cluster it triggers thermal shutdown within minutes. Third, \textit{supply chain criticality}: AI training runs are non-interruptible workloads where a single disruption can invalidate weeks of compute, creating losses that far exceed the downtime itself.
 
-Under the Abundance Without Boundaries scenario, several regional portfolios approach conditions where ClimVaR exceeds V$_0$---that is, where climate-adjusted residual value turns negative. Europe reaches 93.5\% ClimVaR intensity; China 79.5\%; the United States 64.3\%. Only APMEA, at 33.5\%, remains in moderate territory. The channels that are hardest to mitigate---physical damage, cooling stress, supply chain interruption---are the channels that grow fastest with AI scale. Carbon, the most responsive channel, shrinks to irrelevance in relative terms. The toolkit that worked for the installed base does not scale to the AI era.
+Under the Abundance Without Boundaries scenario, several regional portfolios approach conditions where ClimVaR exceeds V$_0$---that is, where climate-adjusted residual value approaches zero or turns negative under tail conditions. Europe reaches 93.5\% ClimVaR intensity; China 79.5\%; the United States 64.3\%. Only APMEA, at 33.5\%, remains in moderate territory. The channels that are hardest to mitigate---physical damage, cooling stress, supply chain interruption---are the channels that grow fastest with AI scale. Carbon, the most responsive channel, shrinks to irrelevance in relative terms. The toolkit that worked for the installed base does not scale to the AI era.
 
 \end{twocolbody}
 
