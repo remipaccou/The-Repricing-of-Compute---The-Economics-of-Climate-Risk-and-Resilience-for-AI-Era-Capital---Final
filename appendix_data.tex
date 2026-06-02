@@ -1,0 +1,616 @@
+% =============================================================================
+% APPENDIX A: DATA AND HYPOTHESES
+% Last updated: 2026-03-06
+% =============================================================================
+
+\section{Data and Hypotheses}
+
+% =============================================
+% A.1 MODEL ARCHITECTURE
+% =============================================
+
+\subsection{Model Architecture}
+\label{app:model_arch}
+
+The analysis is built from a structured input system containing 17 interconnected
+components that form the complete hypothesis chain. The architecture is designed for
+transparency and reproducibility: every numerical assumption is stored in a single
+documented location, and modifying any parameter triggers automatic recalculation of
+all downstream outputs.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Model input architecture --- 17 components}
+\label{tab:app_sheets}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{3.8cm}p{2cm}p{7.5cm}@{}}
+\toprule
+\textbf{Component} & \textbf{Category} & \textbf{Content} \\
+\midrule
+Scenario definitions & Documentation & Model version history (V5--V7), scenario structure, changelog \\
+Data flow architecture & Documentation & Dependency map across all input and output components \\
+Global parameters & Hypotheses & 29 modifiable parameters: asset valuation, operating ratios, growth, depreciation \\
+Carbon decoupling ratios & Hypotheses & Carbon/revenue trajectories by region $\times$ scenario (2025--2050) \\
+Source traceability & Hypotheses & Literature references and confidence ratings for each parameter \\
+Country financial data & Parameters & 120 countries: grid carbon intensity (5 horizons), tax, COGS, OPEX, WACC \\
+Facility database & Core data & 13{,}205 geocoded facilities $\times$ 64 attributes \\
+Efficiency matrices & Parameters & PPA factors and PUE by region $\times$ facility tier, with dynamic trajectories \\
+Regional carbon projections & Trajectories & MW-weighted regional carbon intensity to 2050 \\
+Aggregate results & Outputs & ClimVaR by scenario, region, channel, adaptation pathway \\
+Efficiency sensitivity & Outputs & Sensitivity of results to PPA and PUE parameter variation \\
+Regional decomposition & Outputs & Portfolio, ClimVaR$\times$region, facility type, channels, risk tiers \\
+IEA reference mapping & Calibration & IEA source citations with section-level traceability \\
+AI demand projections & Calibration & IEA electricity demand under three AI growth scenarios \\
+Grid supply mix & Calibration & Regional generation mix projections to 2050 \\
+Emissions cross-check & Calibration & Modeled emissions validated against IEA benchmarks \\
+Extended risk parameters & Calibration & Grid delay, electricity price multipliers, supply chain data \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The model has undergone four documented version increments. Version~5 introduced dynamic
+IEA trajectories replacing static parameters. Version~6 added regionalized asset values,
+cooling ratios, and grid congestion modeling. Version~7 computed facility-level ClimVaR
+across all scenarios, producing 24 output columns per facility (4 scenario combinations
+$\times$ 6 channel metrics). Version~7.5 integrated three AI growth scenarios with binary
+inclusion flags, enabling portfolio-level analysis under LTG, SAI, and AWB assumptions
+from a single database.
+
+
+% =============================================
+% A.2 FACILITY DATABASE
+% =============================================
+
+\subsection{Facility Database}
+\label{app:database}
+
+\subsubsection{Database Dimensions}
+
+The core facility database contains 13{,}205 rows and 64 columns. Each row represents
+a single data center facility; each column carries one of six categories of information:
+
+\begin{itemize}
+\item \textbf{Location} (3 columns): geocoded latitude, longitude, and ISO country code
+(120 countries represented).
+\item \textbf{Identity and capacity} (8 columns): unique identifier, IT capacity (MW),
+facility name, owner, provider type, sub-region, rack count, source database.
+\item \textbf{Financial structure} (14 columns): annual revenue, asset value, COGS ratio,
+OPEX ratio, tax rate, WACC, yearly growth, terminal growth, depreciation ratio, CAPEX
+ratio, insurance premium, electricity cooling ratio, outdoor salary ratio, purchase ratio.
+\item \textbf{Efficiency and emissions} (6 columns): Scope~1 emissions (tCO$_2$/yr),
+Scope~2 raw and PPA-adjusted, PUE, PPA factor, and terminal value year.
+\item \textbf{ClimVaR outputs} (24 columns): facility-level ClimVaR percentage and five
+channel decompositions ($\gamma$, CC$^2$, $\beta$, $\delta$, $\xi$), under 4 scenario
+combinations (BAU/NZT $\times$ MEAN/Q95).
+\item \textbf{Scenario flags} (3 columns): binary inclusion flags for LTG, SAI, AWB
+growth scenarios.
+\end{itemize}
+
+
+\subsubsection{Installed Base: Sources and Coverage}
+
+The installed base comprises 8{,}572 facilities totaling 90{,}818~MW (90.8~GW),
+assembled from four complementary source types:
+
+\begin{enumerate}
+\item \textbf{Commercial databases}: Data Center Map, Cloudscene, and proprietary
+Schneider Electric client records provide the core inventory with location, operator,
+and capacity attributes. Cross-referencing eliminates duplicates.
+\item \textbf{Regulatory filings}: planning permissions, environmental impact assessments,
+and grid connection applications in the US, EU, China, and Japan provide independent
+capacity verification for facilities above 10~MW.
+\item \textbf{Satellite imagery validation}: building footprint analysis provides
+independent size estimates, calibrated against known facilities to derive MW capacity
+from floor area.
+\item \textbf{Operator disclosures}: annual and sustainability reports from publicly
+listed operators (Equinix, Digital Realty, CyrusOne, NTT, Chindata, GDS) provide
+facility-level data for approximately 35\% of total installed GW.
+\end{enumerate}
+
+\paragraph{Capacity distribution.} Facility IT capacities range from 15~kW (enterprise
+server rooms) to 300~MW (hyperscale campuses), with a median of 10.6~MW. The distribution
+is heavily right-skewed: 73.4\% of facilities exceed 1~MW, but only 4.7\% exceed 50~MW
+and 3.0\% exceed 100~MW. The top decile by capacity accounts for over 60\% of total GW.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Installed base capacity distribution}
+\label{tab:app_mw_dist}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Capacity band} & \textbf{Facilities} & \textbf{\% of base} & \textbf{Cumulative GW} \\
+\midrule
+$<$ 1 MW & 2{,}283 & 26.6\% & 0.9 \\
+1--5 MW & 3{,}221 & 37.6\% & 9.5 \\
+5--10 MW & 906 & 10.6\% & 6.6 \\
+10--50 MW & 1{,}755 & 20.5\% & 36.5 \\
+50--100 MW & 152 & 1.8\% & 10.7 \\
+$>$ 100 MW & 255 & 3.0\% & 26.6 \\
+\midrule
+\textbf{Total} & \textbf{8{,}572} & \textbf{100\%} & \textbf{90.8} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Provider types.} The database classifies facilities into five provider
+categories reflecting operational characteristics and financial profiles.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Installed base by provider type}
+\label{tab:app_provider}
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+\textbf{Provider type} & \textbf{Facilities} & \textbf{\% of base} & \textbf{Typical capacity} \\
+\midrule
+Retail colocation & 5{,}662 & 66.1\% & 0.015--5~MW \\
+Wholesale / large colocation & 1{,}560 & 18.2\% & 5--50~MW \\
+Telecommunications & 1{,}068 & 12.5\% & 0.5--20~MW \\
+Hyperscale (cloud) & 149 & 1.7\% & 50--300~MW \\
+Other (hosting, reseller, cloud) & 133 & 1.6\% & Variable \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Country coverage.} Table~\ref{tab:app_country_coverage} presents the 20
+largest data center markets by installed capacity. Together they account for 93\% of
+global installed MW. The full database covers 120 countries.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Top 20 data center markets by installed capacity}
+\label{tab:app_country_coverage}
+\begin{tabular}{@{}lrrr|lrrr@{}}
+\toprule
+\textbf{Country} & \textbf{DCs} & \textbf{MW} & \textbf{\%} & \textbf{Country} & \textbf{DCs} & \textbf{MW} & \textbf{\%} \\
+\midrule
+United States & 2{,}383 & 30{,}329 & 33.4 & Canada & 272 & 1{,}327 & 1.5 \\
+China & 1{,}284 & 25{,}076 & 27.6 & Russia & 255 & 1{,}054 & 1.2 \\
+United Kingdom & 374 & 3{,}596 & 4.0 & South Korea & 94 & 1{,}023 & 1.1 \\
+Japan & 447 & 2{,}940 & 3.2 & Norway & 27 & 896 & 1.0 \\
+India & 206 & 2{,}603 & 2.9 & Hong Kong & 109 & 809 & 0.9 \\
+Germany & 291 & 2{,}128 & 2.3 & UAE & 49 & 775 & 0.9 \\
+France & 186 & 1{,}682 & 1.9 & Israel & 61 & 739 & 0.8 \\
+Australia & 247 & 1{,}624 & 1.8 & Italy & 151 & 716 & 0.8 \\
+Singapore & 115 & 1{,}547 & 1.7 & Brazil & 116 & 683 & 0.8 \\
+Ireland & 63 & 1{,}542 & 1.7 & Netherlands & 207 & 1{,}434 & 1.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Aggregate emissions.} The installed base generates approximately 1.0~MtCO$_2$/yr
+in Scope~1 emissions (diesel backup) and 482.7~MtCO$_2$/yr in raw Scope~2 emissions
+(purchased electricity). After PPA adjustment, Scope~2 decreases to 400.0~MtCO$_2$/yr
+(17\% reduction). Total annual revenue is \$147~billion; total book asset value is
+\$750~billion.
+
+
+\subsubsection{Prospective AI-Era Infrastructure}
+
+Prospective facilities are drawn from four source databases, ordered by decreasing certainty.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Prospective facility source databases}
+\label{tab:app_source_databases}
+\begin{tabular}{@{}p{4cm}rrrl@{}}
+\toprule
+\textbf{Source} & \textbf{Facilities} & \textbf{GW} & \textbf{Mean MW} & \textbf{Certainty} \\
+\midrule
+Epoch AI GPU Clusters & 62 & 7.8 & 125 & High \\
+Tier~2 Announced & 46 & 4.6 & 100 & Medium \\
+Probabilistic LTG & 2{,}316 & 231.3 & 100 & Low \\
+Probabilistic SAI & 2{,}195 & 219.1 & 100 & Low \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{The total unique database contains 4{,}633 prospective facilities (462.7~GW).
+Facilities are assigned to growth scenarios via binary inclusion flags. The effective
+count per scenario is: LTG = 615 (62.9~GW), SAI = 1{,}195 (121.1~GW), AWB = 2{,}939
+(295.6~GW). Results in Parts~IV--VI are reported by scenario, not for the raw total.}
+\normalsize
+
+\paragraph{Tier~1 confirmed projects (sample).} The Epoch AI GPU Cluster database
+includes named, publicly documented projects: OpenAI Stargate (Abilene TX, phased to
+500~MW), Microsoft AI campuses (UK, Sweden, Spain), Meta superclusters (multiple US
+locations), xAI Memphis (500~MW announced), NVIDIA Blackwell clusters (multiple sites),
+AWS sovereign deployments (Saudi Arabia, Malaysia, Thailand, New Zealand, Chile), and
+Google APAC expansion projects. These represent the highest-certainty prospective
+capacity---most are under construction or recently commissioned.
+
+\paragraph{Tier~2 announced projects (sample).} Includes sovereign AI campuses
+(Sesterce Valence FR 250~MW, DataVolt NEOM SA 1.5~GW phased), large colocation expansions
+with planning permissions (Pure DC UK, Vantage \$2B deployment, Brookfield \$10B plan),
+and national programs (SK 3~GW plan South Korea, Scala 4.75~GW Brazil).
+
+
+\subsubsection{Scenario Composition}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Portfolio composition by AI growth scenario}
+\label{tab:app_scenario_composition}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Scenario} & \textbf{Total DCs} & \textbf{Total GW} & \textbf{AI added} & \textbf{AI GW} \\
+\midrule
+Installed only & 8{,}572 & 90.8 & --- & --- \\
++ Limits to Growth & 9{,}187 & 153.7 & 615 & 62.9 \\
++ Sustainable AI & 9{,}767 & 211.9 & 1{,}195 & 121.1 \\
++ Abundance Without Boundaries & 11{,}511 & 386.4 & 2{,}939 & 295.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Regional Distribution}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Facility coverage by region}
+\label{tab:app_regional}
+\begin{tabular}{@{}lrr|rr@{}}
+\toprule
+& \multicolumn{2}{c|}{\textbf{Installed base}} & \multicolumn{2}{c}{\textbf{Total (AWB)}} \\
+\textbf{Region} & \textbf{DCs} & \textbf{GW} & \textbf{DCs} & \textbf{GW} \\
+\midrule
+United States & 2{,}383 & 30.3 & 4{,}071 & 199.1 \\
+China & 1{,}284 & 25.1 & 2{,}267 & 123.4 \\
+Europe & 2{,}019 & 15.4 & 2{,}574 & 70.9 \\
+Asia-Pacific & 1{,}593 & 11.6 & 2{,}495 & 101.2 \\
+Middle East & 255 & 2.6 & 370 & 14.1 \\
+Rest of World & 1{,}038 & 5.9 & 1{,}428 & 44.9 \\
+\midrule
+\textbf{Total} & \textbf{8{,}572} & \textbf{90.8} & \textbf{11{,}511} & \textbf{386.4} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Asia-Pacific excludes China; includes Japan, Australia, Singapore, South Korea.
+Rest of World includes India, Canada, Latin America, Africa, Russia.}
+\normalsize
+
+
+\subsubsection{Geocoding and Climate Linkage}
+
+All facilities are geocoded to coordinates enabling linkage to downscaled CMIP6 climate
+projections at $0.1° \times 0.1°$ resolution ($\sim$10~km). For installed facilities,
+coordinates are derived from address geocoding or satellite imagery. For prospective
+facilities, coordinates are assigned at the announced site location (Tier~1/2) or
+metropolitan area centroid (probabilistic). The climate linkage assigns four physical risk
+variables to each facility for each year (2025--2050) under each RCP pathway at three
+distribution quantiles (Q25, MEAN, Q95).
+
+
+% =============================================
+% A.3 FINANCIAL PARAMETERS
+% =============================================
+
+\subsection{Financial Parameter Calibration}
+\label{app:financial}
+
+\subsubsection{Global Parameters}
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Global model parameters (29 documented hypotheses)}
+\label{tab:app_global_params}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}p{4cm}rlll@{}}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Unit} & \textbf{Source} & \textbf{Confidence} \\
+\midrule
+Asset value / MW (base) & 9 & \$M/MW & Schneider, CBRE 2024 & High \\
+PUE (global default) & 1.40 & --- & Uptime Institute 2024 & High \\
+Backup ratio (diesel) & 0.50 & --- & Industry standard & High \\
+Diesel consumption & 300 & L/MWh & Generator spec & High \\
+Diesel emission factor & 2.68 & kgCO$_2$/L & GHG Protocol & High \\
+AI revenue multiplier & 2.0$\times$ & --- & McKinsey, Thunder Said & Mixed \\
+Size mult.\ (retail) & 1.0$\times$ & --- & Baseline & High \\
+Size mult.\ (wholesale) & 0.87$\times$ & --- & CBRE, Houlihan Lokey & High \\
+Size mult.\ (hyperscale) & 0.75$\times$ & --- & CBRE, Synergy Research & High \\
+Revenue growth & 5\%/yr & --- & Industry consensus & Mixed \\
+Terminal growth & 2\% & --- & Standard DCF & High \\
+Elec.\ cooling / revenue & 5\% & --- & Uptime, IEA 2025 & Mixed \\
+Outdoor salary / revenue & 0.4\% & --- & Expert estimate & Low \\
+Purchase ratio ($p$) & 15\% & --- & $p \approx c - s$ & Mixed \\
+Insurance premium (base) & 5\% & of damage & Industry standard & Mixed \\
+Insurance premium (AI) & 10\% & of damage & Expert estimate & Low \\
+Depreciation / AV ($d$) & 8\% & --- & Damodaran, Equinix & High \\
+CAPEX / revenue (base) & 10\% & --- & CBRE mature DC & High \\
+CAPEX / revenue (AI tiers) & 20\% & --- & Equinix 32\%, DLR 27\% & Mixed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Asset Valuation by Region and Tier}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Asset value per MW (\$M/MW) by region and facility tier}
+\label{tab:app_asset_value}
+\begin{tabular}{@{}lccccl@{}}
+\toprule
+\textbf{Region} & \textbf{Base} & \textbf{Tier1} & \textbf{Tier2} & \textbf{Tier3} & \textbf{Rationale} \\
+\midrule
+US & 9 & 40 & 25 & 30 & Highest construction costs \\
+Europe & 9 & 38 & 24 & 28 & $\sim$95\% of US costs \\
+China & 7 & 28 & 18 & 22 & $\sim$70\% of US costs \\
+Asia-Pacific & 8 & 32 & 20 & 25 & Mix SG/JP (high) + ID/TH (low) \\
+Middle East & 9 & 42 & 26 & 32 & Extreme heat cooling premium \\
+RoW & 8 & 30 & 20 & 24 & Mixed; LatAm $\sim$85\% of US \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Sources: IEA (2025); Schneider Electric TradeOff Tool; CBRE 2024. Tier1 upper
+bound (\$42M/MW, Middle East) reflects IEA frontier AI estimates.}
+\normalsize
+
+\vspace{0.2cm}
+The base asset value of \$9M/MW produces a total installed book value of \$750~billion.
+Size multipliers and the AI revenue multiplier produce an effective range from \$6.8M/MW
+(large legacy wholesale) to \$42M/MW (Tier~1 AI, Middle East). The DCF valuation ($V_0$)
+exceeds book value by approximately $\times$1.35 for the installed base (\$1{,}012B on
+\$750B), reflecting the going-concern premium of operational facilities.
+
+
+\subsubsection{Observed Parameter Ranges}
+
+Table~\ref{tab:app_ranges} reports the actual ranges computed across all 13{,}205
+facilities, validating that calibration produces realistic distributions.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Observed parameter ranges across the database}
+\label{tab:app_ranges}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Parameter} & \textbf{Min} & \textbf{Median} & \textbf{Max} & \textbf{Unit} \\
+\midrule
+IT capacity & 0.015 & 11.2 & 300.0 & MW \\
+Asset value & \$120K & \$91M & \$8.0B & \$ \\
+Annual revenue & \$29K & \$18.8M & \$720M & \$/yr \\
+COGS / revenue & 35\% & 46\% & 50\% & ratio \\
+OPEX / revenue & 22\% & 27\% & 30\% & ratio \\
+WACC & 5.5\% & 7.0\% & 15.5\% & ratio \\
+Tax rate & 0\% & 25\% & 35\% & ratio \\
+PUE & 1.12 & 1.40 & 1.55 & ratio \\
+PPA factor & 0.49 & 0.70 & 0.90 & ratio \\
+ClimVaR\% (BAU/MEAN) & 2.4\% & 8.8\% & 16.3\% & \% of $V_0$ \\
+ClimVaR\% (NZT/MEAN) & 3.0\% & 9.7\% & 17.0\% & \% of $V_0$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Country-Level Parameters}
+
+The model provides 14 parameters for each of 120 countries: grid carbon intensity at five
+time horizons (2024, 2030, 2035, 2040, 2050), tax rate, COGS ratio, OPEX ratio, WACC, and
+regional classification. Table~\ref{tab:app_country_full} presents the 20 largest markets.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Financial and carbon parameters --- 20 largest data center markets}
+\label{tab:app_country_full}
+\begin{tabular}{@{}l r rrrrr rrr@{}}
+\toprule
+& & \multicolumn{5}{c}{\textbf{Grid carbon intensity (gCO$_2$/kWh)}} & & & \\
+\cmidrule(lr){3-7}
+\textbf{Country} & \textbf{Region} & \textbf{2024} & \textbf{2030} & \textbf{2035} & \textbf{2040} & \textbf{2050} & \textbf{Tax} & \textbf{COGS} & \textbf{WACC} \\
+\midrule
+US & N.\ Am. & 390 & 293 & 215 & 156 & 120 & 21\% & 48\% & 6.8\% \\
+CN & AP Em. & 580 & 464 & 348 & 232 & 136 & 25\% & 38\% & 9.0\% \\
+DE & W.\ Eur. & 380 & 247 & 160 & 106 & 46 & 30\% & 49\% & 6.5\% \\
+GB & W.\ Eur. & 220 & 143 & 93 & 62 & 26 & 25\% & 47\% & 7.2\% \\
+JP & AP Dev. & 470 & 329 & 235 & 188 & 141 & 30\% & 48\% & 6.5\% \\
+FR & W.\ Eur. & 55 & 36 & 23 & 15 & 7 & 25\% & 44\% & 6.8\% \\
+SG & AP Dev. & 420 & 294 & 210 & 168 & 126 & 17\% & 45\% & 6.0\% \\
+IN & S.\ Asia & 710 & 533 & 391 & 284 & 178 & 25\% & 35\% & 11.5\% \\
+AU & AP Dev. & 620 & 496 & 372 & 260 & 136 & 30\% & 44\% & 7.2\% \\
+NL & W.\ Eur. & 310 & 202 & 131 & 87 & 37 & 26\% & 47\% & 6.5\% \\
+BR & Lat.\ Am. & 90 & 74 & 57 & 45 & 25 & 34\% & 40\% & 11.5\% \\
+KR & AP Dev. & 450 & 315 & 225 & 180 & 90 & 24\% & 44\% & 6.5\% \\
+IE & W.\ Eur. & 300 & 195 & 126 & 84 & 36 & 12\% & 47\% & 7.0\% \\
+AE & M.\ East & 400 & 352 & 288 & 232 & 140 & 9\% & 36\% & 8.0\% \\
+SE & W.\ Eur. & 15 & 10 & 6 & 4 & 3 & 21\% & 47\% & 6.5\% \\
+NO & W.\ Eur. & 10 & 7 & 4 & 3 & 2 & 22\% & 47\% & 6.5\% \\
+MY & AP Em. & 550 & 413 & 303 & 220 & 110 & 24\% & 38\% & 8.5\% \\
+ID & AP Em. & 700 & 560 & 420 & 280 & 168 & 22\% & 35\% & 10.0\% \\
+SA & M.\ East & 500 & 440 & 360 & 290 & 175 & 20\% & 40\% & 8.5\% \\
+MX & Lat.\ Am. & 440 & 330 & 242 & 176 & 110 & 30\% & 42\% & 10.0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Grid carbon intensity: IEA (2025) regional projections. Tax: OECD (2024).
+COGS: Equinix, Digital Realty, CyrusOne reports. WACC: Damodaran (2024) REIT sector
+with country risk premiums. The 100 remaining countries follow the same structure.}
+\normalsize
+
+
+% =============================================
+% A.4 PHYSICAL RISK DATA
+% =============================================
+
+\subsection{Physical Risk Data}
+\label{app:physical}
+
+\subsubsection{Climate Projection Source}
+
+Physical risk variables are extracted from bias-corrected, statistically downscaled CMIP6
+projections \citep{eyring2016} at $0.1° \times 0.1°$ resolution ($\sim$10~km at
+mid-latitudes). Projections are generated at each facility's geocoded coordinates for
+2025--2050 under RCP~2.6, 4.5, and 8.5, at three distribution quantiles (Q25, MEAN, Q95).
+
+\subsubsection{Variable Definitions}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Physical risk variables: definitions and channel mapping}
+\label{tab:app_physical_vars}
+\begin{tabular}{@{}p{2.2cm}p{1.5cm}p{4cm}p{5.5cm}@{}}
+\toprule
+\textbf{Variable} & \textbf{Channel} & \textbf{Definition} & \textbf{Climate driver} \\
+\midrule
+COOLING & $\gamma$ & Fractional increase in cooling energy vs.\ 2024 & Cooling degree days (CDD, base 18°C, ASHRAE) \\
+BID & $\beta$ & Business interruption days/yr, fraction of year & Composite: flood, storm, drought, wildfire, heat \\
+DAMAGE & $\delta$ & Annual damage probability, fraction of AV & Flood depth, wind speed, seismic, fire \\
+HPL & $\xi$ & Fractional outdoor labor productivity loss & Days $>$ 35°C / 40°C wet-bulb \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Hazard Sub-Decomposition}
+
+For the business interruption and damage channels, the model further decomposes risk into
+five hazard types: drought (d), extreme wind (ew), riverine flood (r), storm surge (s),
+and tropical wind (tw). This decomposition provides the inputs for the Shapley attribution
+(Section~2.2.3) and is reported at facility level in the case study outputs. Each hazard
+type carries its own annual probability distribution at facility coordinates.
+
+\subsubsection{Dataset Scale}
+
+The complete projection dataset contains approximately 17~million observations:
+up to 11{,}511 facilities (AWB) $\times$ 25 years $\times$ 2--3 RCP pathways $\times$
+4 physical risk variables $\times$ 3 quantiles. Projections are computed for all facilities
+regardless of scenario inclusion, enabling flexible portfolio composition at analysis stage.
+
+
+% =============================================
+% A.5 SUPPLY CHAIN DATA
+% =============================================
+
+\subsection{Supply Chain Data}
+\label{app:supply_chain}
+
+\subsubsection{Leontief Input-Output Tables}
+
+The technical coefficient matrix $A$ is drawn from OECD Multi-Regional Input-Output Tables
+(MRIOT, 2019 vintage): 67 countries $\times$ 45 ISIC sectors. The data center sector maps
+to ISIC telecommunications, computer services, and electrical equipment manufacturing.
+
+\subsubsection{Supply Chain Concentration}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Critical supply chain components for data center infrastructure}
+\label{tab:app_supply_chain}
+\begin{tabular}{@{}p{3cm}cp{2.5cm}p{2cm}p{3.5cm}@{}}
+\toprule
+\textbf{Component} & \textbf{China share} & \textbf{Category} & \textbf{Substitut.} & \textbf{DC impact} \\
+\midrule
+GaN devices & 99\% & Semiconductors & Very low & Power conversion \\
+High-purity Si (4N+) & 95\% & Raw material & Very low & Semiconductor base \\
+Rare earth magnets & 90\% & Cooling & Very low & Fans, pumps, compressors \\
+LFP battery cells & 99\% & Storage & Low & UPS, BESS \\
+SiC substrates & 50\% & Semiconductors & Medium & Power supply \\
+HBM memory & $\sim$40\% (KR) & Memory & Low & GPU bandwidth \\
+Refined copper & 40\% & Cabling/cooling & Medium & Busbars, heat exchangers \\
+Transformers & $\sim$35\% & Grid equipment & Medium & DC power feed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Sources: IEA (2025) Table 4.1; IEA Critical Minerals; USGS.}
+\normalsize
+
+\subsubsection{Pass-Through Calibration}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Leontief pass-through rates by supply chain pathway}
+\label{tab:app_passthrough}
+\begin{tabular}{@{}p{3.5cm}ccp{5cm}@{}}
+\toprule
+\textbf{Pathway} & \textbf{Rate} & \textbf{Lead time} & \textbf{Rationale} \\
+\midrule
+Semiconductor fab & 60--80\% & 6--12 mo & TSMC 54\%, limited substitutability \\
+Power transformers & 40--60\% & 18--36 mo & Moderate concentration, long lead \\
+Cooling components & 20--40\% & 3--6 mo & More substitutable \\
+Server/rack assembly & 30--50\% & 3--9 mo & Component bottlenecks \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Calibrated from: \citet{barrot2016}, IEA \citep{iea2025energyai}, expert assessment.
+Fixed-coefficient limitation discussed in Section~5.10.}
+\normalsize
+
+
+% =============================================
+% A.6 OUTPUT DATA STRUCTURE
+% =============================================
+
+\subsection{Output Data Structure}
+\label{app:outputs}
+
+The model produces three output datasets, documented in Table~\ref{tab:app_outputs}.
+
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Model output datasets}
+\label{tab:app_outputs}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}p{2.8cm}p{1.3cm}p{1.3cm}p{8cm}@{}}
+\toprule
+\textbf{Dataset} & \textbf{Rows} & \textbf{Cols} & \textbf{Content} \\
+\midrule
+Aggregate results & 288 & 14 & ClimVaR by scenario (BAU/NZT) $\times$ quantile (Q25/MEAN/Q95) $\times$ region (4) $\times$ asset class (4) $\times$ adaptation (3). Columns: $V_0$, five channels, residual value, ClimVaR\%, ClimVaR. \\[0.2cm]
+Annual decomposition & 288 & 305 & Same cross-section with annual resolution 2026--2050. 12 channel variables $\times$ 25 years + 3 annual summary metrics $\times$ 25 years. Enables trajectory analysis. \\[0.2cm]
+Facility case studies & 72 & 592 & Three sites (Abilene, Valence, Guangdong) $\times$ 24 scenario combinations. 64 base columns + 528 time-series columns: 22 channel-hazard decompositions $\times$ 25 years. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 12 channel variables decompose ClimVaR into: direct business interruption, supply
+chain interruption, physical damage (by 5 hazard types: drought, extreme wind, riverine
+flood, storm surge, tropical wind), heat productivity, cooling cost increase, and carbon
+costs (Scopes 1, 2, 3). The facility case study dataset further decomposes damage into the
+same five hazard types, enabling the Shapley attribution presented in Section~4.3.
+
+
+% =============================================
+% A.7 PARAMETER CONFIDENCE
+% =============================================
+
+\subsection{Parameter Confidence and Sensitivity}
+\label{app:confidence}
+
+Of the 29 documented global parameters, 14 (48\%) are calibrated directly from published
+data with high confidence, 10 (34\%) combine literature and expert judgment, and 5 (17\%)
+rely primarily on expert estimates. The low-confidence parameters are minor contributors:
+a $\pm$50\% perturbation of all five changes aggregate ClimVaR by $<$3\%.
+
+\subsubsection{Validation Cross-Checks}
+
+\paragraph{Industry benchmark.} The WEF projects climate-driven costs for data centers of
+\$81~billion annually by 2035 \citep{wef2025}. Our installed base ClimVaR of \$388~billion,
+annualized over 25 years at 7\% discount rate, implies approximately \$34~billion/yr---lower
+than the WEF figure (which includes prospective infrastructure). Under Abundance Without
+Boundaries, our annualized equivalent rises to $\sim$\$150~billion. Directional alignment
+confirms that ClimVaR values are conservative.
+
+\paragraph{Sensitivity bounds.} WACC $\pm$2~pp shifts aggregate ClimVaR by $\pm$15--20\%;
+halving BI frequency reduces it by $\sim$25\%; $\pm$50\% on the five low-confidence
+parameters changes aggregate ClimVaR by $<$3\%. The order of magnitude ($\sim$\$400B
+installed) is robust to reasonable parameter variation. Monte Carlo sensitivity analysis
+is planned for a subsequent version.

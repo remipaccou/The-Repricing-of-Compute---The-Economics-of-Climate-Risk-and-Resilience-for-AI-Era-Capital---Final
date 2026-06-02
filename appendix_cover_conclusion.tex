@@ -1,0 +1,28 @@
+% =============================================================================
+% APPENDIX_COVER_CONCLUSION.TEX
+% Closing page — Front_Page background with SE branding
+% =============================================================================
+\clearpage
+\thispagestyle{empty}%
+\begin{tikzpicture}[remember picture, overlay]
+  % Background image
+  \node[inner sep=0pt] at (current page.center) {%
+    \includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio=false]{images/IM1.jpeg}};
+  % Radial vignette
+  \fill[black, opacity=0.6, path fading=circle with fuzzy edge 20 percent]
+    (current page.center) circle (18cm);
+  % Schneider Electric Research Institute — centered middle
+  \node[anchor=center, text width=0.7\paperwidth, align=center]
+    at ([yshift=30mm]current page.center) {%
+      {\displayfont\fontsize{28}{34}\selectfont\color{white}Schneider Electric\textsuperscript{\fontsize{14}{14}\selectfont TM}\par}
+      \vspace{3mm}
+      {\displaylight\fontsize{14}{18}\selectfont\color{white}Research Institute\par}};
+  % This Is Advancing Energy Tech — centered at 2/3 from top
+  \node[anchor=center, inner sep=0pt]
+    at ([yshift=-30mm]current page.center) {%
+      {\displaymedium\fontsize{16}{20}\selectfont\color{SEGreen}Advancing Energy Tech\par}};
+  % URL bottom
+  \node[anchor=south, inner sep=0pt]
+    at ([yshift=15mm]current page.south) {%
+      {\fontsize{8}{10}\selectfont\color{white!60}\href{https://www.se.com/ww/en/insights/sustainability/sustainability-research-institute/}{www.se.com/sustainability-research-institute}}};
+\end{tikzpicture}
