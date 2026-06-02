@@ -1,0 +1,226 @@
+% ============================================================================
+% appendices.tex — References + Terminology + Appendix covers with full content
+% Restructured 2026-03-17
+% ============================================================================
+
+% =============================================================================
+% APPENDIX DIVIDER — full-bleed with Front Page image
+% =============================================================================
+\fullbleedpage
+  {Appendices}
+  {References, terminology, technical documentation, data hypotheses, scenario trajectories, and the complete ClimVaR methodology.}
+  {images/Front_Page.jpeg}
+
+% =============================================================================
+% APPENDIX OVERVIEW
+% =============================================================================
+\input{appendix_overview}
+
+% =============================================================================
+% REFERENCES (bibtex)
+% =============================================================================
+\clearpage
+\thispagestyle{chapterstart}
+\greensep
+
+\begingroup
+\fontsize{7.5}{9.5}\selectfont
+\setlength{\bibsep}{3pt plus 1pt minus 1pt}
+\bibliographystyle{apalike}
+\bibliography{references}
+\endgroup
+
+% =============================================================================
+% TERMINOLOGY
+% =============================================================================
+\input{terminology}
+
+\appendix
+
+% =============================================================================
+% APPENDIX A — Shapley (Complete ClimVaR Methodology)
+% =============================================================================
+\clearpage\thispagestyle{chapterstart}
+
+\begin{center}
+\begin{tikzpicture}
+  \clip (0,0) circle (3cm);
+  \node[inner sep=0pt] at (0,0) {\includegraphics[width=6cm]{images/SHAPLEY}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{4mm}
+
+\begin{center}
+{\displayfont\fontsize{24}{28}\selectfont\color{SEGreen}Appendix A\par}
+\vspace{2mm}
+{\displayfont\fontsize{18}{22}\selectfont\color{SESubtitle}Complete ClimVaR Methodology\par}
+\vspace{2mm}
+{\fontsize{9}{11}\selectfont\color{SESubtitle}Lloyd Shapley (1923--2016)\par}
+\end{center}
+
+\vspace{4mm}
+
+\begin{pullquote}
+Each player receives a payoff equal to his average marginal contribution over all possible orderings of the players.
+\end{pullquote}
+
+\vspace{4mm}
+
+\begin{twocolbody}
+\noindent Climate risk for data centers is not a single hazard---it is a portfolio of five interacting channels. Because these channels interact non-additively (cooling stress amplifies business interruption; carbon pricing compounds with physical damage), simple summation double-counts risk.
+
+The Shapley value from cooperative game theory provides a principled decomposition. For $n=5$ risk channels, it evaluates all $2^5 = 32$ coalition combinations per facility, attributing each channel's marginal contribution to total ClimVaR. The decomposition satisfies efficiency, symmetry, and the null player property.
+
+\subsubsection*{Contents}
+\begin{itemize}[leftmargin=10pt, itemsep=2pt]
+  \item A.1 Complete ClimVaR methodology (Epelbaum 2025)
+  \item A.2 Shapley value formulation for risk attribution
+  \item A.3 Computational implementation (32 coalitions)
+  \item A.4 Expected Shortfall estimation
+\end{itemize}
+\end{twocolbody}
+
+% --- Full ClimVaR methodology from Thomas ---
+\clearpage
+\input{appendix_climvar}
+
+% =============================================================================
+% APPENDIX B — Leontief (Data & Hypotheses)
+% =============================================================================
+\clearpage\thispagestyle{chapterstart}
+
+\begin{center}
+\begin{tikzpicture}
+  \clip (0,0) circle (3cm);
+  \node[inner sep=0pt] at (0,0) {\includegraphics[width=6cm]{images/LEONTIEF}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{4mm}
+
+\begin{center}
+{\displayfont\fontsize{24}{28}\selectfont\color{SEGreen}Appendix B\par}
+\vspace{2mm}
+{\displayfont\fontsize{18}{22}\selectfont\color{SESubtitle}Data and Hypotheses\par}
+\vspace{2mm}
+{\fontsize{9}{11}\selectfont\color{SESubtitle}Wassily Leontief (1906--1999)\par}
+\end{center}
+
+\vspace{4mm}
+
+\begin{pullquote}
+The data for a particular year, set out in the form of a rectangular input-output table, describe the flows of goods and services among all sectors of an economy.
+\end{pullquote}
+
+\vspace{4mm}
+
+\begin{twocolbody}
+\noindent The empirical foundation of this study rests on a geocoded database of 8,572 installed data centers across 120 countries (90.8~GW), linked to facility-level financial parameters, CMIP climate projections, and three AI-era growth scenarios. This appendix documents model architecture, database construction, financial calibration, physical risk data, supply chain propagation (Leontief input-output), and output data---enabling full reproducibility.
+
+\subsubsection*{Contents}
+\begin{itemize}[leftmargin=10pt, itemsep=2pt]
+  \item B.1 Model architecture and database construction
+  \item B.2 Financial parameter calibration
+  \item B.3 Physical risk data and supply chain data
+  \item B.4 Output data and parameter confidence
+\end{itemize}
+\end{twocolbody}
+
+% --- Full content from working paper appendix ---
+\clearpage
+\input{appendix_data}
+
+% =============================================================================
+% APPENDIX C — Markowitz (Adaptation / Scenarios)
+% =============================================================================
+\clearpage\thispagestyle{chapterstart}
+
+\begin{center}
+\begin{tikzpicture}
+  \clip (0,0) circle (3cm);
+  \node[inner sep=0pt] at (0,0) {\includegraphics[width=6cm]{images/MARKOWITZ}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{4mm}
+
+\begin{center}
+{\displayfont\fontsize{24}{28}\selectfont\color{SEGreen}Appendix C\par}
+\vspace{2mm}
+{\displayfont\fontsize{18}{22}\selectfont\color{SESubtitle}Scenario Architecture\par}
+\vspace{2mm}
+{\fontsize{9}{11}\selectfont\color{SESubtitle}Harry Markowitz (1927--2023)\par}
+\end{center}
+
+\vspace{4mm}
+
+\begin{pullquote}
+Diversification is both observed and sensible; a rule of behavior which does not imply the superiority of diversification must be rejected both as a hypothesis and as a maxim.
+\end{pullquote}
+
+\vspace{4mm}
+
+\begin{twocolbody}
+\noindent Adaptation investment across a portfolio of data centers mirrors the logic of financial portfolio theory. Operators allocate finite capital across facilities with heterogeneous risk profiles, seeking the combination that maximizes risk reduction per dollar invested.
+
+The framework models three strategies---Baseline, Selective, and Proactive---and demonstrates that risk reductions are multiplicative, not additive, because channels interact through the Shapley decomposition. The ``one champion action'' approach (Selective) targets the highest-Shapley-value channel per facility.
+
+\subsubsection*{Contents}
+\begin{itemize}[leftmargin=10pt, itemsep=2pt]
+  \item C.1 Climate-economic pathways (BAU, NZT)
+  \item C.2 AI growth scenarios (LTG, SAI, AWB)
+  \item C.3 Risk channel trajectories (2026--2050)
+  \item C.4 Adaptation parameters and non-additivity
+\end{itemize}
+\end{twocolbody}
+
+% --- Full scenario content from working paper ---
+\clearpage
+\input{appendix_scenarios}
+
+% =============================================================================
+% APPENDIX D — Brundtland (Literature Review)
+% =============================================================================
+\clearpage\thispagestyle{chapterstart}
+
+\begin{center}
+\begin{tikzpicture}
+  \clip (0,0) circle (3cm);
+  \node[inner sep=0pt] at (0,0) {\includegraphics[width=6cm]{images/Brundtland}};
+\end{tikzpicture}
+\end{center}
+
+\vspace{4mm}
+
+\begin{center}
+{\displayfont\fontsize{24}{28}\selectfont\color{SEGreen}Appendix D\par}
+\vspace{2mm}
+{\displayfont\fontsize{18}{22}\selectfont\color{SESubtitle}Literature Review\par}
+\vspace{2mm}
+{\fontsize{9}{11}\selectfont\color{SESubtitle}Gro Harlem Brundtland (b.\ 1939)\par}
+\end{center}
+
+\vspace{4mm}
+
+\begin{pullquote}
+Sustainable development is development that meets the needs of the present without compromising the ability of future generations to meet their own needs.
+\end{pullquote}
+
+\vspace{4mm}
+
+\begin{twocolbody}
+\noindent The empirical foundation rests on a geocoded database of 8,572 installed data centers across 120 countries (90.8~GW), linked to facility-level financial parameters, climate projections, and three AI-era growth scenarios. This appendix documents the literature context and reviews existing approaches to climate risk assessment for data centers and digital infrastructure.
+
+\subsubsection*{Contents}
+\begin{itemize}[leftmargin=10pt, itemsep=2pt]
+  \item D.1 Physical climate risks for data centers
+  \item D.2 Financial valuation of climate risk
+  \item D.3 Infrastructure-specific assessment frameworks
+  \item D.4 Gap analysis and positioning
+\end{itemize}
+\end{twocolbody}
+
+% --- Full literature review from working paper ---
+\clearpage
+\input{appendix_literature}

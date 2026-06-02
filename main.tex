@@ -1,0 +1,57 @@
+% =============================================================================
+% MAIN.TEX - The Climate Cost of Computing (White Paper)
+% Schneider Electric Research Institute
+% Compile with XeLaTeX + BibTeX
+% =============================================================================
+\documentclass{seri-report}
+
+\doctitle{The Repricing of Compute}
+\docsubtitle{The Economics of Climate Risk and Resilience for AI-Era Capital}
+\docauthors{R\'{e}mi Paccou \& Thomas Epelbaum}
+\docdate{April 2026}
+\partnerlabel{}
+\runninghead{The Repricing of Compute --- The Economics of Climate Risk and Resilience for AI-Era Capital}
+
+\coverimage{images/front_page.jpeg}
+
+\begin{document}
+
+% --- Front page ---
+\input{frontpage}
+
+% --- Foreword ---
+\input{foreword}
+\input{foreword2}
+
+% --- About the Authors ---
+\input{about-authors}
+
+% --- Executive Summary ---
+\input{executive-summary}
+
+% --- Table of Contents ---
+\input{toc}
+
+% --- List of Exhibits ---
+\input{list-of-exhibits}
+
+% ================== MAIN BODY ==================
+
+% Enable running head (gray, top left) from chapter pages onward
+\enablerunninghead
+
+\input{ch1-introduction}
+\input{ch2-methods-data}
+\input{ch3-results}
+\input{ch4-conclusions}
+
+% ================== APPENDICES ==================
+
+\input{appendices}
+
+% ================== CLOSING PAGE ==================
+\clearpage
+\suppressnextrunninghead
+\input{appendix_cover_conclusion}
+
+\end{document}

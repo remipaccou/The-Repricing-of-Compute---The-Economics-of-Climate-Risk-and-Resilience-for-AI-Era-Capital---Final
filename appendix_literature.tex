@@ -1,0 +1,327 @@
+% =============================================================================
+% APPENDIX D: LITERATURE REVIEW – CLIMATE RISK FOR DATA CENTERS
+% Last updated: 2026-03-10
+% =============================================================================
+
+\section{Literature Review}
+\label{app:literature}
+
+Results are organised along three guiding questions:
+(Q1) physical climate risks for data centers and digital infrastructure;
+(Q2) insurance, insurability and climate risk for critical infrastructure;
+(Q3) quantitative frameworks to integrate climate risk into infrastructure
+valuation.
+
+\subsection{Search Strategy and Screening Criteria}
+
+The search process combined a broad semantic query on climate risk for data
+centers and AI-related digital infrastructure with structured screening based
+on abstracts and, where available, full texts. Papers and reports were
+screened in when they met the following criteria:
+
+\begin{itemize}
+  \item \textbf{Infrastructure focus:} data centers, digital infrastructure,
+        AI infrastructure, or closely related critical infrastructure
+        (energy systems, telecommunications, industrial facilities, utilities).
+  \item \textbf{Climate risk analysis:} quantitative modelling or analysis of
+        physical climate risks (heat, flooding, storms, sea level rise, drought)
+        and/or their economic or operational impacts.
+  \item \textbf{Publication quality:} peer-reviewed academic papers or
+        high-quality institutional reports from central banks, regulators,
+        international organisations, or major research institutes.
+  \item \textbf{Financial risk assessment:} explicit analysis of
+        climate-related insurance, risk transfer, or methods for integrating
+        climate risk into investment and financial assessment.
+  \item \textbf{Infrastructure scale:} large-scale critical infrastructure
+        rather than purely residential or small commercial buildings.
+\end{itemize}
+
+For each included study, we extracted information on infrastructure scope,
+hazards, risk modelling approach, financial impacts, insurance treatment,
+valuation framework, main findings, and acknowledged limitations.
+
+\vspace{0.3cm}
+\noindent The remainder of this appendix summarises the evidence base by
+guiding question.
+
+% =============================================
+% D.1 Q1 – PHYSICAL CLIMATE RISKS
+% =============================================
+
+\subsection{Q1 – Physical Climate Risks for Data Centers and Digital Infrastructure}
+\label{app:literature_q1}
+
+The peer-reviewed literature directly quantifying physical climate risks for
+data centers is extremely limited: only three studies explicitly address data
+center siting and operations under climate change. A broader body of work on
+analogous infrastructure — power generation, telecommunications, and
+electricity grids — provides transferable methodologies. Flooding (riverine,
+pluvial and coastal) emerges as the most consistently analysed hazard, with
+heat extremes and storms also prominent. Most studies rely on RCP~4.5 and
+RCP~8.5 (or SSP-equivalent) scenarios, with horizons extending from the 2030s
+to 2100. Limitations repeatedly noted include coarse hazard-map resolution,
+generic vulnerability functions not calibrated to local conditions, and
+inadequate treatment of indirect impacts, cascading effects, and compound
+hazards.
+
+\subsubsection{Direct Data Center Studies}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Direct data center climate risk studies}
+\label{tab:app_lit_dc}
+\begin{tabular}{@{}p{3.5cm}p{3.2cm}p{7.0cm}@{}}
+\toprule
+\textbf{Study} & \textbf{Scope} & \textbf{Key contributions and limitations} \\
+\midrule
+Pasupuleti (2022) &
+Data center siting and capacity decisions &
+Integrates HEC\textendash HMS hydrologic simulations into data center
+location and capacity planning. Uses rainfall–runoff scenarios to estimate
+flood probabilities and downtime risk, combined with CloudSim models to
+quantify impacts on service availability and financial loss. Demonstrates a
+rare linkage from hydrological hazards to operational disruptions; does not
+yet include multi-hazard or insurance effects. \\[0.1cm]
+Pasupuleti (2024) &
+GIS-based siting under flood and climate risk &
+Develops a climate- and flood-aware GIS framework for data center site
+selection, incorporating riverine and pluvial flooding, sea-level rise, and
+extreme precipitation. High-resolution DEMs and multi-criteria decision
+analysis produce spatially explicit risk surfaces. Reports a 63\% reduction in
+expected annual damage for hazard-aware siting relative to purely economic
+criteria; vulnerability remains represented by generic damage functions. \\[0.1cm]
+Pasupuleti (2025) &
+GIS–AI framework for resilient siting and operation &
+Combines climate datasets and machine learning models to build
+risk-informed suitability surfaces and predict outage probability and cooling
+energy demand. Shows that modest cost premiums for resilient locations can
+be offset by reduced disruption and lower energy expenditure over asset
+lifetimes. Focuses on siting and operation but does not quantify portfolio-level
+financial tail risks. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Analogous Infrastructure with Transferable Methods}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Representative climate risk studies for analogous infrastructure}
+\label{tab:app_lit_analogous}
+\begin{tabular}{@{}p{3.5cm}p{3.2cm}p{7.0cm}@{}}
+\toprule
+\textbf{Study} & \textbf{Infrastructure / hazards} & \textbf{Methodological insights} \\
+\midrule
+Dawson et al. (2018) &
+Energy, water, transport, ICT (UK) &
+Provides a systems framework for national climate risk assessment across
+infrastructure sectors, including ICT. Identifies flooding as the greatest risk
+to all sectors and projects a doubling of users reliant on electricity
+infrastructure at flood risk under 2~\textdegree C, tripling under 4~\textdegree C.
+Highlights interdependence between energy and ICT; notes limited asset-level
+performance data. \\[0.1cm]
+Forzieri et al. (2016) &
+Critical infrastructure in Europe; heat, drought, coastal floods &
+Projects that damages to European critical infrastructures could triple by the
+2020s, increase six-fold by mid-century, and exceed 10 times present values
+by end of century. Identifies heatwaves, droughts, and coastal floods as
+showing the most dramatic rise. Uses pan-European hazard maps and generic
+vulnerability functions, with limited sector-specific calibration. \\[0.1cm]
+Oughton et al. (2023) &
+Global mobile telecommunications (7.6M assets);
+tropical cyclones, coastal flooding &
+Performs a global vulnerability assessment of mobile telecom infrastructure
+using crowdsourced asset data and climate projections under RCP~8.5.
+Estimates that a 0.01\% annual probability tropical cyclone event could affect
+2.26~million cells (USD~1.01~billion damage, 44\% increase), and coastal
+flooding could affect 109.9~thousand cells (USD~2.69~billion damage, 78\%
+increase). Demonstrates a scalable methodology directly transferable to
+digital infrastructure inventories. \\[0.1cm]
+Luo et al. (2023) &
+Thermal and hydro power plants; multi-hazard &
+Develops a multi-hazard risk framework for power generation projects across
+Eastern Europe, the Mediterranean, and Central Asia. Uses publicly available
+climate data and technology-specific vulnerability factors to estimate
+generation losses under RCP~4.5 and RCP~8.5. Highlights rising water
+temperatures as a key overlooked risk; does not explicitly monetise all
+operational impacts. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Cross-cutting Limitations}
+
+Across Q1 studies, several limitations are recurrent: coarse resolution of
+global hazard maps compared to facility-level siting decisions; reliance on
+generic damage functions not calibrated for data center equipment, cooling
+systems, or power infrastructure; limited treatment of indirect and
+cascading impacts (e.g.\ supply chain disruptions, grid failures); and
+under-representation of electric and telecommunications networks relative
+to other sectors. Data centers are rarely treated explicitly despite their
+growing systemic importance.
+
+% =============================================
+% D.2 Q2 – INSURANCE AND INSURABILITY
+% =============================================
+
+\subsection{Q2 – Insurance, Insurability and Climate Risk for Critical Infrastructure}
+\label{app:literature_q2}
+
+The literature on insurance and insurability in the context of infrastructure
+climate risk is sparse, and almost entirely absent for data centers and
+digital infrastructure. Of the 25 sources screened for insurance content, only
+one study (Kerkhofs et al., 2025) provides a substantive quantitative analysis
+of insurance mechanisms and their effect on portfolio tail risks. Most
+infrastructure climate risk studies do not address premiums, coverage terms,
+market withdrawals, or shifts of risk from private insurers to public budgets.
+No work was found that documents protection gaps, premium trajectories, or
+coverage restrictions specifically for data centers or comparable high-value
+digital assets.
+
+\subsubsection{Available Evidence on Insurance Mechanisms}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Insurance-related findings in reviewed studies}
+\label{tab:app_lit_insurance}
+\begin{tabular}{@{}p{3.5cm}p{3.2cm}p{7.0cm}@{}}
+\toprule
+\textbf{Study} & \textbf{Context} & \textbf{Insurance-related contributions} \\
+\midrule
+Kerkhofs et al. (2025) &
+Power firms (India, Thailand) &
+Develops an asset-level framework for physical risk assessment and
+translation to portfolio-level impacts, including explicit treatment of
+insurance. Uses Monte Carlo simulation with spatial correlations and
+Value-at-Risk metrics to quantify tail risks. Shows that insurance has a
+limited effect on average portfolio losses but materially affects tail risk
+distribution. Explores scenarios in which insurers withdraw from high-risk
+markets, increasing residual risk for asset owners. \\[0.1cm]
+Karagiannakis et al. (2024) &
+Power grid fragility &
+Discusses use of fragility curves by insurers for risk assessment and
+life-cycle costing of grid assets. Does not provide empirical analysis of
+premium trends, coverage restrictions, or protection gaps. \\[0.1cm]
+Other reviewed studies &
+Various infrastructure sectors &
+Do not include explicit insurance analysis. Insurance is occasionally
+mentioned qualitatively but without quantitative evidence on premiums,
+coverage, or protection gaps for critical infrastructure. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Identified Gaps for Data Centers}
+
+For data centers and digital infrastructure, the review did not identify any
+peer-reviewed work that:
+
+\begin{itemize}
+  \item Quantifies protection gaps (insured vs.\ uninsured losses) at asset or
+        portfolio level.
+  \item Analyses premium dynamics (trend, volatility, deductibles) for
+        climate-exposed facilities.
+  \item Documents coverage withdrawals, non-renewals, or market capacity
+        constraints for large digital campuses.
+  \item Examines how climate-driven insurance conditions affect
+        bankability, cost of capital, or asset valuation for data centers.
+\end{itemize}
+
+This absence is a critical limitation for any climate-economic framework that
+aims to integrate insurance dynamics into data center infrastructure
+valuation.
+
+% =============================================
+% D.3 Q3 – VALUATION FRAMEWORKS
+% =============================================
+
+\subsection{Q3 – Quantitative Frameworks to Integrate Climate Risk into Infrastructure Valuation}
+\label{app:literature_q3}
+
+A growing literature proposes quantitative frameworks for integrating climate
+risk into infrastructure investment and valuation, but none are tailored to
+data centers. Existing approaches include probability-of-default and DSCR
+metrics for energy assets, real options analysis for flood protection,
+discounted cash flow models with climate adjustments, Expected Annual Damage
+coupled with stress testing, and storyline-based frameworks linking climate
+scenarios to asset damages. Common elements are scenario-based hazard
+projections, hazard-to-impact translation via vulnerability functions, and
+financial metrics such as NPV, EAD, or VaR. Key methodological gaps for
+application to data centers include the absence of data center-specific
+vulnerability functions, incomplete representation of indirect and cascading
+impacts, and limited treatment of compound multi-hazard risks.
+
+\subsubsection{Representative Valuation Frameworks}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Representative quantitative valuation frameworks}
+\label{tab:app_lit_valuation}
+\begin{tabular}{@{}p{3.5cm}p{3.2cm}p{7.0cm}@{}}
+\toprule
+\textbf{Study} & \textbf{Framework type} & \textbf{Relevance and limitations} \\
+\midrule
+In et al. (2020, 2021, 2022) &
+Probability of default / DSCR for energy infrastructure &
+Develop a framework for pricing climate-related risks of energy investments,
+using DSCR and probability of default rather than NPV alone. Combine
+asset-specific physical and transition risks with financing structure to
+estimate timing and size of losses. Demonstrate that renewable projects are
+more resilient than fossil assets. Applied only to energy; does not consider
+digital infrastructure or supply-chain effects. \\[0.1cm]
+Prime et al. (2018) &
+Real options for flood protection &
+Applies real options analysis to flood defense investment around electricity
+infrastructure, using UKCP09 sea-level projections to 2100. Values flexibility
+in investment timing under climate uncertainty and shows which sites benefit
+from early vs.\ delayed adaptation. Could be adapted for data center flood
+defenses; currently focused on coastal electricity assets. \\[0.1cm]
+Neumann et al. (2015) &
+DCF-based integrated assessment across US infrastructure &
+Combines sector models and discounted cash flow (3\% rate) to estimate
+climate impacts and adaptation benefits for roads, bridges, coastal
+development, and drainage. Finds that mitigation policies reduce cumulative
+impacts by 25–35\%, with avoided costs exceeding \$460~billion through 2100.
+Electric and telecommunications networks are explicitly excluded. \\[0.1cm]
+Pasha et al. (2025) &
+Flood risk stress testing (EAD) for solar power &
+Implements a climate risk stress test based on the
+hazard–vulnerability–exposure approach, using global flood hazard data and
+depth–damage functions to derive Expected Annual Damage for a solar plant.
+Strength is transparency and replicability; limitations include coarse hazard
+resolution, generic damage functions, and omission of indirect financial
+impacts. \\[0.1cm]
+Koks et al. (2022) &
+Storyline framework for coastal infrastructure &
+Combines sea-level rise projections, inundation modelling, and infrastructure
+damage assessment into a storyline framework. Shows that coordinated
+adaptation can reduce coastal flood impacts by more than 70\%. Limited to two
+adaptation strategies and coastal flooding, but illustrates how physical
+scenarios can be linked to discrete adaptation choices. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Implications for Data Center Valuation}
+
+Taken together, these frameworks demonstrate that climate risk can be
+integrated into infrastructure valuation through adjusted DCF, probability-of-default metrics, EAD-based stress testing, and real options. However, no
+framework in the reviewed literature has been designed for, or validated on,
+data center infrastructure. In particular, existing work does not capture:
+
+\begin{itemize}
+  \item Cooling-system dependencies and power quality requirements specific
+        to high-density compute.
+  \item Operational and business-interruption impacts beyond physical asset
+        damage, including service continuity requirements.
+  \item Insurance and insurability dynamics as explicit financial channels.
+  \item Cascading economic impacts of data center outages on downstream
+        users and services.
+  \item Multi-hazard compound scenarios (e.g.\ extreme heat, drought, and
+        grid stress occurring jointly).
+\end{itemize}
+

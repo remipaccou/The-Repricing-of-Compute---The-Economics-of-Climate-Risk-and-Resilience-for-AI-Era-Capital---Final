@@ -1,0 +1,191 @@
+% =============================================================================
+% APPENDIX C: SCENARIO ARCHITECTURE AND RISK MODELING
+% Trajectories, adaptation parameters, physical and transition risk modeling
+% Last updated: 2026-03-06
+% =============================================================================
+\newpage
+\section{Scenario Architecture}
+\label{app:scenarios}
+
+% =============================================
+% C.1 EFFICIENCY AND EMISSIONS TRAJECTORIES
+% =============================================
+
+\subsection{Efficiency and Emissions Trajectories}
+\label{app:efficiency}
+
+\subsubsection{PPA Factor Trajectories}
+
+PPA factors represent the fraction of grid emissions retained after renewable procurement
+(1.0 = fully grid-dependent; 0.0 = fully renewable). They decline over time as renewable
+procurement expands, at different rates by region reflecting market maturity and policy
+environment.
+
+\begin{table}[H]
+\centering
+\small
+\caption{PPA factor trajectories by region (base facilities, BAU pathway, 2024--2050)}
+\label{tab:app_ppa_traj}
+\begin{tabular}{@{}lcccccl@{}}
+\toprule
+\textbf{Region} & \textbf{2024} & \textbf{2030} & \textbf{2035} & \textbf{2040} & \textbf{2045} & \textbf{2050} \\
+\midrule
+US & 0.70 & 0.55 & 0.42 & 0.32 & 0.25 & 0.20 \\
+Europe & 0.65 & 0.48 & 0.33 & 0.22 & 0.16 & 0.12 \\
+China & 0.85 & 0.78 & 0.65 & 0.52 & 0.44 & 0.38 \\
+Asia-Pacific & 0.80 & 0.68 & 0.55 & 0.42 & 0.35 & 0.30 \\
+Middle East & 0.90 & 0.80 & 0.65 & 0.50 & 0.42 & 0.35 \\
+RoW & 0.90 & 0.85 & 0.75 & 0.62 & 0.54 & 0.48 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Tier multipliers: base $\times$1.0, tier1 $\times$0.75, tier2 $\times$0.80, tier3 $\times$0.85. Under NZT, decline is approximately 30\% steeper. Sources: IEA, RE100, BNEF 2024. Validated against IEA (2025) \S6: $\sim$40\% industry PPA coverage by 2027.}
+\normalsize
+
+\subsubsection{PUE Trajectories}
+
+\begin{table}[H]
+\centering
+\small
+\caption{PUE trajectories by region (base / tier1)}
+\label{tab:app_pue}
+\begin{tabular}{@{}lcc|cc|cc@{}}
+\toprule
+& \multicolumn{2}{c|}{\textbf{2024}} & \multicolumn{2}{c|}{\textbf{2035}} & \multicolumn{2}{c}{\textbf{2050}} \\
+\textbf{Region} & \textbf{Base} & \textbf{Tier1} & \textbf{Base} & \textbf{Tier1} & \textbf{Base} & \textbf{Tier1} \\
+\midrule
+US & 1.45 & 1.15 & 1.24 & 1.10 & 1.12 & 1.06 \\
+Europe & 1.40 & 1.12 & 1.20 & 1.08 & 1.10 & 1.05 \\
+China & 1.50 & 1.18 & 1.28 & 1.11 & 1.14 & 1.06 \\
+Asia-Pacific & 1.45 & 1.15 & 1.26 & 1.10 & 1.14 & 1.06 \\
+Middle East & 1.55 & 1.20 & 1.32 & 1.12 & 1.16 & 1.07 \\
+RoW & 1.55 & 1.20 & 1.32 & 1.12 & 1.16 & 1.07 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Sources: Uptime Institute 2024 (industry avg = 1.56); Google sustainability reports (1.09); IEA (2025). China government mandates PUE $<$1.3 for new builds.}
+\normalsize
+
+\subsubsection{Carbon Ratio Trajectories}
+
+The carbon ratio decouples carbon cost growth from revenue growth, capturing the combined effect of grid decarbonization, renewable procurement, and efficiency improvement:
+
+$$\text{carbon\_ratio}(r, t) \approx \frac{I_{\text{carb}}(r, t)}{I_{\text{carb}}(r, 2024)} \times \frac{\text{PPA}(r, t)}{\text{PPA}(r, 2024)} \times \frac{\text{PUE}(r, t)}{\text{PUE}(r, 2024)}$$
+
+\begin{table}[H]
+\centering
+\small
+\caption{Carbon ratio trajectories (BAU / NZT)}
+\label{tab:app_carbon_ratio}
+\begin{tabular}{@{}lcc|cc|cc@{}}
+\toprule
+& \multicolumn{2}{c|}{\textbf{2030}} & \multicolumn{2}{c|}{\textbf{2040}} & \multicolumn{2}{c}{\textbf{2050}} \\
+\textbf{Region} & \textbf{BAU} & \textbf{NZT} & \textbf{BAU} & \textbf{NZT} & \textbf{BAU} & \textbf{NZT} \\
+\midrule
+US & 0.92 & 0.82 & 0.75 & 0.48 & 0.62 & 0.25 \\
+Europe & 0.85 & 0.75 & 0.58 & 0.35 & 0.42 & 0.15 \\
+China & 0.95 & 0.88 & 0.78 & 0.55 & 0.62 & 0.32 \\
+Asia-Pacific & 0.93 & 0.85 & 0.74 & 0.50 & 0.58 & 0.28 \\
+Middle East & 0.96 & 0.88 & 0.76 & 0.52 & 0.56 & 0.28 \\
+RoW & 0.97 & 0.92 & 0.84 & 0.65 & 0.68 & 0.40 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% =============================================
+% C.2 CARBON PRICE TRAJECTORIES
+% =============================================
+
+\subsection{Carbon Price Trajectories}
+\label{app:carbon_price}
+
+Carbon cost trajectories follow IEA scenarios \citep{iea2024}, differentiated by region and policy ambition.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Carbon price trajectories by scenario and region (\$/tCO$_2$)}
+\label{tab:app_carbon_price}
+\begin{tabular}{@{}llccccc@{}}
+\toprule
+\textbf{Scenario} & \textbf{Region} & \textbf{2025} & \textbf{2030} & \textbf{2035} & \textbf{2040} & \textbf{2050} \\
+\midrule
+BAU & Europe (ETS) & 65 & 85 & 100 & 110 & 120 \\
+ & China (ETS) & 10 & 25 & 40 & 55 & 80 \\
+ & US (shadow) & 15 & 25 & 35 & 50 & 75 \\
+ & RoW (effective) & 5 & 12 & 20 & 30 & 50 \\
+\midrule
+NZT & Europe (ETS) & 65 & 130 & 200 & 260 & 300 \\
+ & China (ETS) & 10 & 50 & 100 & 160 & 250 \\
+ & US (carbon tax) & 15 & 60 & 110 & 170 & 250 \\
+ & RoW (effective) & 5 & 30 & 65 & 110 & 200 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{BAU reflects current policy trends. NZT follows NGFS Net Zero 2050. Under NZT, carbon costs multiply $\times$3--6 relative to BAU by 2050. Sources: NGFS Phase IV (2023), EU ETS market data, IEA WEO (2025).}
+\normalsize
+
+Carbon costs are allocated to three scopes following GHG Protocol definitions: Scope~1 covers direct emissions from diesel backup generators; Scope~2 covers purchased electricity, adjusted for grid carbon intensity by country and PPA factor; Scope~3 covers upstream supply chain emissions using Leontief propagation coefficients.
+
+
+% =============================================
+% C.3 ADAPTATION PARAMETERS
+% =============================================
+
+\subsection{Adaptation Parameters}
+\label{app:adaptation}
+
+\subsubsection{Reduction Rates by Channel}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Adaptation reduction rates by channel and pathway}
+\label{tab:app_adaptation}
+\begin{tabular}{@{}lccl@{}}
+\toprule
+\textbf{Channel} & \textbf{Selective} & \textbf{Proactive} & \textbf{Primary mechanism} \\
+\midrule
+$\gamma$ Cooling & 15--25\% & 24\% & Liquid cooling adoption (immersion, DTC, CDU) \\
+CC Carbon & 40--50\% & 63\% & Renewable PPAs + grid selection + on-site generation \\
+$\beta$ Business Interruption & 10--20\% & 36\% & Microgrid + BESS + predictive monitoring \\
+$\delta$ Physical Damage & 10--15\% & 24\% & Structural hardening + climate-aware siting \\
+$\xi$ Heat Productivity & 10--15\% & 28\% & Automation + enclosed logistics + remote operations \\
+\midrule
+\textbf{Portfolio weighted} & \textbf{$\sim$21\%} & \textbf{$\sim$38\%} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\small\textit{Selective applies to new builds only (greenfield, +15--20\% CAPEX). Proactive applies across the portfolio including legacy retrofit (+40--60\% CAPEX). Reductions applied independently per channel. Interaction effects are partially captured but may be understated (see Section~5.10).}
+\normalsize
+
+\subsubsection{Adaptation Strategy Definitions}
+
+Three pathways span the range from inaction to systematic portfolio integration:
+
+\begin{itemize}
+\item \textbf{Baseline}: No climate-specific adaptation. Air-cooled, grid-dependent, cost-optimized siting, no legacy retrofit. Represents the current industry default against which adaptation value is measured.
+
+\item \textbf{Selective}: Climate-aware design for new builds only. Includes liquid cooling, climate-informed siting, and renewable PPAs for prospective facilities; legacy assets remain unchanged. Captures the ``low-regret'' adaptation available at greenfield stage. The Selective pathway captures approximately 56\% of total Proactive value at lower capital outlay.
+
+\item \textbf{Proactive}: Systematic adaptation across the portfolio. Includes all Selective measures plus microgrid retrofit on legacy assets, geographic rebalancing of new capacity, structured adaptation programs incorporating energy services and monitoring, and consideration of early retirement for highest-risk facilities. Combines infrastructure technology solutions, energy strategy decisions, and portfolio management choices.
+\end{itemize}
+
+
+% =============================================
+% C.4 PHYSICAL AND TRANSITION RISK MODELING
+% =============================================
+
+\subsection{Risk Channel Modeling}
+\label{app:risk_modeling}
+
+The mathematical derivation of how physical and transition risks enter the ClimVaR framework through the five channels ($\gamma$, CC$^{1,2,3}$, $\beta$, $\delta$, $\xi$) is provided in Appendix~B (Sections~B.6--B.9), including the Shapley decomposition for hazard attribution within the $\beta$ channel and the Leontief propagation for supply chain effects.
+
+The key calibration result for transition risk: the combined PUE$\times$PPA adjustment reduces aggregate Scope~2 emissions from 2{,}888~MtCO$_2$/year (raw) to 1{,}841~MtCO$_2$/year (adjusted)---a 36\% reduction. Prospective AI facilities achieve approximately 50\% reduction; the installed base achieves approximately 17\%.
+
+Physical and transition scenarios interact multiplicatively: RCP pathways set the hazard environment for physical channels; BAU/NZT pathways set carbon prices for transition channels; adaptation pathways modify both. The framework evaluates all combinations to identify robust strategies.

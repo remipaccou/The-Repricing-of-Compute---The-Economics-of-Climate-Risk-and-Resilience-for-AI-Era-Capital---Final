@@ -1,0 +1,39 @@
+% ================== APPENDICES ==================
+% IMPORTANT: Order is A=ClimVaR Methodology, B=Data & Hypotheses
+% (swapped 2026-03-27 per Rémi's instruction)
+\clearpage
+\input{appendix_cover}
+
+\input{appendix_overview}
+
+\clearpage
+\appendix
+
+% Cover + Appendix A: Complete ClimVaR Methodology (Epelbaum 2025)
+% IMPORTANT: appendix_climvar must contain exactly ONE \section command.
+% All internal sections must be \subsection or below.
+% The thebibliography block must be REMOVED (all refs are in references.bib).
+\input{cover_appendix_a}
+\input{appendix_climvar}
+
+% Force counter to B after appendix_climvar
+\setcounter{section}{1}
+
+% Cover + Appendix B: Data and Hypotheses
+\input{cover_appendix_b}
+\input{appendix_data}
+
+% Force counter to C
+\setcounter{section}{2}
+
+% Cover + Appendix C: Scenario Architecture and Risk Modeling
+\input{cover_appendix_c}
+\input{appendix_scenarios}
+
+% Cover + Appendix D: Literature Review – Climate Risk for Data Centers
+\input{cover_appendix_d}
+\input{appendix_literature}
+
+% ================== CLOSING PAGE ==================
+\clearpage
+\input{appendix_cover_conclusion}
