@@ -356,7 +356,7 @@ This has a direct consequence that no sustainability strategy focused on renewab
 
 \noindent From the installed base (90.8~GW) to the Abundance Without Boundaries portfolio (386~GW), capacity grows by a factor of 4.3. Physical risk grows by a factor of 11---which yields an amplification of $\times$2.6 per GW added. Three mechanisms drive this non-linearity.
 
-First, \textit{geographic concentration}: AI facilities cluster in regions combining cheap power with fast permitting---Texas, Virginia, parts of China and Southeast Asia---the same regions with elevated physical climate exposure. The installed base is geographically diverse; AI additions concentrate risk. Second, \textit{power density}: AI racks at 30--100+~kW generate more waste heat per square meter, so that a cooling system failure at a 5~kW/rack legacy facility is an inconvenience, while at a 60~kW/rack AI cluster it triggers thermal shutdown within minutes. Third, \textit{supply chain criticality}: AI training runs are non-interruptible workloads where a single disruption can invalidate weeks of compute, creating losses that far exceed the downtime itself.
+First, \textit{geographic concentration}: AI facilities cluster in regions combining cheap power with fast permitting---the US South, the US East Coast, parts of China and Southeast Asia---the same regions with elevated physical climate exposure. The installed base is geographically diverse; AI additions concentrate risk. Second, \textit{power density}: AI racks at 30--100+~kW generate more waste heat per square meter, so that a cooling system failure at a 5~kW/rack legacy facility is an inconvenience, while at a 60~kW/rack AI cluster it triggers thermal shutdown within minutes. Third, \textit{supply chain criticality}: AI training runs are non-interruptible workloads where a single disruption can invalidate weeks of compute, creating losses that far exceed the downtime itself.
 
 Under the Abundance Without Boundaries scenario, several regional portfolios approach conditions where ClimVaR exceeds V$_0$---that is, where climate-adjusted residual value approaches zero or turns negative under tail conditions. Europe reaches 93.5\% ClimVaR intensity; China 79.5\%; the United States 64.3\%. Only APMEA, at 33.5\%, remains in moderate territory. The channels that are hardest to mitigate---physical damage, cooling stress, supply chain interruption---are the channels that grow fastest with AI scale. Carbon, the most responsive channel, shrinks to irrelevance in relative terms. The toolkit that worked for the installed base does not scale to the AI era.
 
@@ -563,7 +563,7 @@ All ten adaptation levers create net value. The cheapest resilience is designed 
 
 \begin{twocolbody}
 
-\noindent Three prospective AI data centers produce ClimVaR intensities ranging from 37.6\% to 167\%, a 4.5$\times$ dispersion at site level. The Shapley decomposition and Leontief analysis produce their most concrete results at this scale. Site~A (US) and Site~B (France) are representative facilities; Site~C (Southern China) is a representative 100~MW allocation reflecting projected AI deployment in the Pearl River Delta---its results are indicative of the regional risk profile rather than a specific site assessment.
+\noindent Three prospective AI data centers produce ClimVaR intensities ranging from 37.6\% to 167\%, a 4.5$\times$ dispersion at site level. The Shapley decomposition and Leontief analysis produce their most concrete results at this scale. Site~A (US) and Site~B (France) are representative facilities; Site~C (Southern China) is a representative 100~MW allocation reflecting projected AI deployment in the region---its results are indicative of the regional risk profile rather than a specific site assessment.
 
 \end{twocolbody}
 
@@ -575,9 +575,9 @@ All ten adaptation levers create net value. The cheapest resilience is designed 
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.5cm} >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
 \toprule
 \datatableheader
-& \thd{Abilene, TX} & \thd{Valence, FR} & \thd{Guangdong, CN} \\
+& \thd{Site~A (US South)} & \thd{Site~B (France)} & \thd{Site~C (S.~China)} \\
 \midrule
-Operator / Project        & OpenAI Stargate      & Sesterce sovereign & Pearl River Delta \\
+Operator / Project        & Major AI hyperscaler      & Sovereign AI project & Major coastal delta \\
 Capacity                  & 2,800~MW            & 100~MW             & 100~MW \\
 Enterprise value (V$_0$)  & \$1.9B              & \$2.1B             & \$1.4B \\
 PUE                       & 1.15                & 1.12               & 1.28 \\
@@ -595,30 +595,30 @@ Heat productivity         & \$11M (1\%)         & \$6M ($<$1\%)      & \$4M (1\%
 \datatableclear
 \end{center}
 
-\exhibitsource{V8 model results. BI includes direct + supply chain (Leontief). Enterprise values at facility level. Guangdong is a probabilistic allocation; results are indicative before site-specific due diligence. The same table structure can be replicated for any facility once site-level financial, hazard, and engineering data are available.}
+\exhibitsource{V8 model results. BI includes direct + supply chain (Leontief). Enterprise values at facility level. Site~C is a probabilistic allocation; results are indicative before site-specific due diligence. The same table structure can be replicated for any facility once site-level financial, hazard, and engineering data are available.}
 
 \begin{twocolbody}
 
-\subsubsection*{Abilene, Texas — The Supply Chain Problem}
+\subsubsection*{Site~A (US) — The Supply Chain Problem}
 
 \paragraph{A moderate intensity with hidden drivers.}
 The largest announced AI facility in the world carries a moderate 46.5\% ClimVaR intensity, apparently safer than many legacy sites. But business interruption (43\%) and cooling (37\%) dominate the profile, while carbon and heat play only marginal roles. On paper, Site~A looks like a robust, low-carbon, low-damage location.
 
 \paragraph{Risk imported through global supply chains.}
-The Shapley decomposition shows that 56\% of Abilene’s business interruption risk comes from tropical wind propagating through semiconductor and power-equipment supply chains. A facility sited in the semi-arid plains of the US South derives more than half its BI exposure from cyclones thousands of kilometers away. Direct on-site hazards account for less than 1\% of BI: Abilene’s risk is not where Abilene is, it is where its suppliers are.
+The Shapley decomposition shows that 56\% of Site~A’s business interruption risk comes from tropical wind propagating through semiconductor and power-equipment supply chains. A facility sited in the semi-arid plains of the US South derives more than half its BI exposure from cyclones thousands of kilometers away. Direct on-site hazards account for less than 1\% of BI: Site~A’s risk is not where Site~A is, it is where its suppliers are.
 
-\subsubsection*{Valence, France — The Flood Trap}
+\subsubsection*{Site~B (France) — The Flood Trap}
 
 \paragraph{A “safe” location with 167\% intensity.}
-A temperate European site often perceived as safe carries 167\% ClimVaR intensity: its climate-adjusted risk exceeds its entire enterprise value. River flood damage (\$2.7B, 75\% of total) dominates, far ahead of BI, cooling, or carbon. The Rhône Valley’s fluvial hazard profile, combined with the site’s proximity to the river, produces an exposure that generic checklists do not flag.
+A temperate European site often perceived as safe carries 167\% ClimVaR intensity: its climate-adjusted risk exceeds its entire enterprise value. River flood damage (\$2.7B, 75\% of total) dominates, far ahead of BI, cooling, or carbon. The river valley’s fluvial hazard profile, combined with the site’s proximity to the river, produces an exposure that generic checklists do not flag.
 
 \paragraph{From screening signal to targeted assessment.}
 Site~B demonstrates the value of the framework as an early-warning tool: without granular hazard attribution, generic assessments would classify this site as low-risk. The 167\% figure is not a literal forecast; it reflects archetype-based calibration and should be read as a strong screening signal that flood exposure merits detailed engineering assessment. The model identifies the question; the answer requires site-specific data on elevation, flood defenses, building envelope, and drainage design.
 
-\subsubsection*{Guangdong, China — The Triple Threat}
+\subsubsection*{Site~C (Southern China) — The Triple Threat}
 
 \paragraph{A balanced but complex risk fingerprint.}
-Guangdong’s 37.6\% intensity looks modest next to Valence, but the composition is more complex: business interruption (53\%), carbon (22\%), and cooling (18\%) form a three-pronged profile. The Pearl River Delta combines typhoon exposure along critical supply chains, high grid carbon intensity, and subtropical heat stress, with each channel contributing a substantial share.
+Site~C’s 37.6\% intensity looks modest next to Site~B, but the composition is more complex: business interruption (53\%), carbon (22\%), and cooling (18\%) form a three-pronged profile. The region combines typhoon exposure along critical supply chains, high grid carbon intensity, and subtropical heat stress, with each channel contributing a substantial share.
 
 \paragraph{No single silver bullet.}
 Site~C is the prototypical case where no single adaptation lever reduces more than a quarter of total exposure. Microgrids can dampen BI, PPAs reduce the carbon wedge, and high-efficiency cooling cuts thermal loads, but none of these alone shifts the site into a low-risk regime. Effective risk reduction requires a \textit{multi-channel} package applied in parallel.
@@ -626,7 +626,7 @@ Site~C is the prototypical case where no single adaptation lever reduces more th
 \subsubsection*{From portfolio analytics to site-level decisions}
 
 \paragraph{Re-using the same machinery at finer grain.}
-All the analytical machinery developed for the 8,572-facility portfolio can be replicated at individual site level, where more qualitative and engineering data are available. For Valence, local information on levees, flood defenses, elevation, and building standards can replace archetype assumptions and either confirm or recalibrate the 167\% signal. For Abilene, a detailed supply chain audit can refine Leontief coefficients, distinguishing between easily substitutable components and true single points of failure.
+All the analytical machinery developed for the 8,572-facility portfolio can be replicated at individual site level, where more qualitative and engineering data are available. For Site~B, local information on levees, flood defenses, elevation, and building standards can replace archetype assumptions and either confirm or recalibrate the 167\% signal. For Site~A, a detailed supply chain audit can refine Leontief coefficients, distinguishing between easily substitutable components and true single points of failure.
 
 \paragraph{A consistent framework across scales.}
 The framework is deliberately designed to operate at both scales without modification: the same ClimVaR, Shapley, and Leontief structures that aggregate risk across regions can be “zoomed in” to support investment committees, permitting decisions, and asset-level adaptation roadmaps. The case studies show how aggregate findings translate into concrete site-level questions: \textit{which channel dominates, which hazards drive it, and which interventions change the answer fastest?}
@@ -641,7 +641,7 @@ The framework is deliberately designed to operate at both scales without modific
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.5cm} >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
 \toprule
 \datatableheader
-& \thd{Abilene, TX} & \thd{Valence, FR} & \thd{Guangdong, CN} \\
+& \thd{Site~A (US South)} & \thd{Site~B (France)} & \thd{Site~C (S.~China)} \\
 \midrule
 \multicolumn{4}{l}{\textbf{BI: hazard attribution (Shapley)}} \\
 Tropical wind / cyclone & 56\% & 52\% & 60\% \\
@@ -665,7 +665,7 @@ Supply chain (indirect) & $>$99\% & 98\% & 98\% \\
 \begin{center}
 \includegraphics[width=0.92\textwidth]{images/exhibit22_triptych.png}
 \end{center}
-\exhibitsource{Radar overlay: each polygon is one facility's channel fingerprint (\% of site-level ClimVaR). Abilene stretches toward BI and Cooling; Valence collapses onto Damage; Guangdong is the most balanced. Overlaying the three profiles on a single chart makes the contrast between risk architectures immediately visible.}
+\exhibitsource{Radar overlay: each polygon is one facility's channel fingerprint (\% of site-level ClimVaR). Site~A stretches toward BI and Cooling; Site~B collapses onto Damage; Site~C is the most balanced. Overlaying the three profiles on a single chart makes the contrast between risk architectures immediately visible.}
 
 % Advisory Services box moved to standalone page after Chapter IV — see advisory-box.tex
 
