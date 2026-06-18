@@ -100,26 +100,26 @@ Nor does it capture several risk categories that are likely to become material o
 
 \subsubsection*{Empirical calibration}
 
-The January 2026 US East Coast winter storm provides a natural experiment for calibrating the $\beta$ channel. Systematic collection of post-event data---downtime, revenue impact, insurance claims---would enable model validation.
+The January 2026 US East Coast winter storm provides a natural experiment for calibrating the $\beta$ channel against observed losses. Systematic collection of post-event operational and financial data---downtime duration, revenue impact, insurance claims, recovery costs---would enable model validation against real-world outcomes. Collaboration with operators and insurers would be required.
 
 \subsubsection*{Water-energy-climate nexus}
 
-Liquid cooling reduces energy but increases water consumption. In water-stressed regions, this may exchange one vulnerability for another. Integrating water projections with cooling trajectories is relevant as AI facilities adopt liquid cooling at scale.
+Liquid cooling reduces energy consumption but increases water consumption. In water-stressed regions---the US Southwest, parts of India, northern China---this substitution may exchange one climate vulnerability for another. Integrating water availability projections with cooling technology trajectories would close a gap in the current analysis and is particularly relevant as AI facilities adopt liquid cooling at scale.
 
 \subsubsection*{Real options for adaptation timing}
 
-A real-option extension would value flexibility to delay while preserving ability to act. The 15--20\% vs 40--60\% CAPEX differential between greenfield and retrofit suggests significant option value in early commitment.
+The current framework treats adaptation as a binary decision (invest or not). A real-option extension would value the flexibility to delay while preserving the ability to act---relevant for legacy facilities where retrofit timing is uncertain and technology is evolving rapidly. The 15--20\% versus 40--60\% CAPEX differential between greenfield and retrofit suggests significant option value in early commitment.
 
-\subsubsection*{Expected Shortfall and tail risk}
+\subsubsection*{Expected Shortfall and tail risk metrics}
 
-Extending to Expected Shortfall (CVaR) would provide a metric better suited to insurance pricing and prudential regulation, where tail losses dominate. Mathematical foundations in Appendix~A.
+The current analysis reports ClimVaR at Q25, MEAN, and Q95 percentiles. Extending this to Expected Shortfall (CVaR)---the conditional expectation of losses beyond a given quantile---would provide a risk metric better suited to insurance pricing and prudential regulation, where tail losses dominate decision-making. The mathematical foundations are developed in Appendix~A.
 
 \subsubsection*{Cross-sector generalization}
 
-The ClimVaR + Shapley + Leontief combination is transferable. Manufacturing, energy, and transportation face analogous challenges. Extension to multi-sector portfolios---data centers $\times$ grids $\times$ telecom---would capture systemic risks.
+The combination of entity-level ClimVaR, Shapley channel attribution, and Leontief supply chain propagation provides a transferable methodology. Manufacturing, energy, and transportation infrastructure face analogous challenges of long-lived capital assets under climate uncertainty. Extension to multi-sector infrastructure portfolios---particularly at points of interdependency (data centers $\times$ power grids $\times$ telecommunications)---would capture systemic risks that sector-specific analysis underestimates.
 
 \subsubsection*{System Dynamics Modeling}
 
-A natural extension: time-varying pathways where carbon prices respond to policy, operator strategies adapt to losses, and MRIOT coefficients reflect supply chain restructuring \citep{beaufils2025}.
+The current model compares outcomes across fixed scenario endpoints. A natural extension would make the pathways themselves time-varying: carbon prices responding to policy signals, operator strategies adapting to observed losses, and MRIOT coefficients reflecting supply chain restructuring over time. Dynamic multi-regional input-output modeling along these lines is being developed in parallel work \citep{beaufils2025}.
 
 \end{twocolbody}
