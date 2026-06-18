@@ -137,18 +137,18 @@ From an investment perspective, the distinction between channels matters more th
 
 \begin{center}
 \datatablesetup
-\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4cm} >{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X >{\raggedright\arraybackslash}X}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.8cm} >{\raggedleft\arraybackslash}p{1.4cm} >{\raggedleft\arraybackslash}p{1cm} >{\raggedright\arraybackslash}X}
 \toprule
 \datatableheader
-\thd{Risk Channel} & \thd{Impact (\$B)} & \thd{Share} & \thd{Mechanism} \\
+\thd{Risk Channel} & \thd{\$B} & \thd{Share} & \thd{Mechanism} \\
 \midrule
 Business interruption ($\beta$) & 121.4 & 31\% & Extreme events, grid stress, downtime \\
-Carbon costs (CC$^{1,2,3}$) & 107.1 & 28\% & Grid emissions $\times$ carbon price trajectory \\
-Physical damages ($\delta$) & 84.1 & 22\% & Structural damage from floods, storms \\
-Cooling penalty ($\gamma$) & 72.6 & 19\% & Rising ambient temperature $\to$ energy cost \\
-Heat productivity ($\xi$) & 2.4 & 1\% & Worker and equipment efficiency losses \\
+Carbon costs (CC$^{1,2,3}$) & 107.1 & 28\% & Grid emissions $\times$ carbon price \\
+Physical damages ($\delta$) & 84.1 & 22\% & Floods, storms, structural damage \\
+Cooling penalty ($\gamma$) & 72.6 & 19\% & Ambient temperature $\to$ energy cost \\
+Heat productivity ($\xi$) & 2.4 & 1\% & Worker/equipment efficiency loss \\
 \midrule
-Total ClimVaR & 387.5 & 100\% & \\
+\textbf{Total ClimVaR} & \textbf{387.5} & \textbf{100\%} & \\
 \bottomrule
 \end{tabularx}
 \datatableclear
@@ -160,15 +160,15 @@ Total ClimVaR & 387.5 & 100\% & \\
 
 \vspace{1mm}
 
-\noindent Why does tropical wind rank first among hazards, ahead of flood? The answer lies in the distinction between severity and reach. River flood inflicts catastrophic damage at exposed sites but affects only the subset of facilities located in floodplains. Tropical wind, by contrast, propagates through supply chains that serve the entire global portfolio: a typhoon disrupting semiconductor fabrication in Taiwan or power transformer production in coastal China degrades every facility that depends on those inputs, regardless of its own geographic location. At the portfolio level, a hazard that touches many facilities indirectly outweighs one that devastates a few directly. The Sankey in Exhibit~11 makes this asymmetry visible: the tropical-wind ribbon is wide not because each event is more destructive, but because its consequences travel further through the network.
+\noindent Why does tropical wind rank first among hazards, ahead of flood? The answer lies in the distinction between severity and reach. River flood inflicts catastrophic damage at exposed sites but affects only facilities in floodplains. Tropical wind propagates through supply chains serving the entire portfolio: a typhoon disrupting semiconductor fabrication in Taiwan degrades every facility depending on those inputs, regardless of location. At portfolio level, a hazard touching many facilities indirectly outweighs one devastating a few directly. The Sankey in Exhibit~11 makes this visible: the tropical-wind ribbon is wide because its consequences travel further through the network.
 
-\vspace{6mm}
+\vspace{3mm}
 
 {\color{SEGreen}\textbf{What \$388B does not capture}}
 
 \vspace{1mm}
 
-\noindent The framework does not capture nature-related risk---water stress, biodiversity constraints on siting permits, ecosystem degradation around cooling water sources---nor does it capture systemic externalities: grid strain from concentrated AI load, community displacement, or the cascading effects of simultaneous service interruptions across interconnected facilities. Each of these omitted channels would widen, not narrow, the exposure estimate. The \$388B figure should therefore be read as the floor of an exposure range whose ceiling remains unquantified. For investors and regulators, the implication is straightforward: climate risk on digital infrastructure is already material at the lower bound; any refinement of the model is more likely to move the estimate upward than downward.
+\noindent The framework does not capture nature-related risk---water stress, biodiversity constraints, ecosystem degradation around cooling sources---nor systemic externalities: grid strain from concentrated AI load, community displacement, or cascading service interruptions across interconnected facilities. Each omitted channel would widen, not narrow, the exposure estimate. The \$388B figure is therefore the floor of an exposure range whose ceiling remains unquantified. For investors and regulators: climate risk on digital infrastructure is already material at the lower bound; model refinements are more likely to move the estimate upward than downward.
 
 \end{twocolbody}
 
