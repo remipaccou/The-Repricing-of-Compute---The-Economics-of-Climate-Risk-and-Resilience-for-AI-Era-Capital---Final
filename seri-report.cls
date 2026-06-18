@@ -10,29 +10,30 @@
 \RequirePackage[english]{babel}
 \RequirePackage[top=22mm, bottom=15mm, left=10.5mm, right=10.5mm, headheight=14pt, headsep=0pt, footskip=10mm]{geometry}
 
-% ---- FONTS (Brand 2026: Special Gothic + Special Gothic Expanded + Fira Sans) --
+% ---- FONTS (Poppins throughout) ----------------------------------------------
 \RequirePackage{iftex}
 \ifxetex
   \RequirePackage{fontspec}
-  % Body: Special Gothic Regular — no italic in font family, use AutoFakeItalic
-  \setmainfont{SpecialGothic-Regular}[Path=fonts/, Extension=.ttf,
-    BoldFont=SpecialGothic-Bold,
-    ItalicFont=SpecialGothic-Regular, ItalicFeatures={FakeSlant=0.15},
-    BoldItalicFont=SpecialGothic-Bold, BoldItalicFeatures={FakeSlant=0.15}]
-  \setsansfont{SpecialGothic-Regular}[Path=fonts/, Extension=.ttf,
-    BoldFont=SpecialGothic-Bold,
-    ItalicFont=SpecialGothic-Regular, ItalicFeatures={FakeSlant=0.15}]
+  % Body: Poppins Regular
+  \setmainfont{Poppins-Regular}[Path=fonts/, Extension=.ttf,
+    BoldFont=Poppins-Bold,
+    ItalicFont=Poppins-Italic,
+    BoldItalicFont=Poppins-BoldItalic]
+  \setsansfont{Poppins-Regular}[Path=fonts/, Extension=.ttf,
+    BoldFont=Poppins-Bold,
+    ItalicFont=Poppins-Italic,
+    BoldItalicFont=Poppins-BoldItalic]
   \renewcommand{\familydefault}{\sfdefault}
-  % Display: Special Gothic Expanded (headlines, chapter titles, stats)
-  \newfontfamily\displayfont{SpecialGothic_Expanded-Bold}[Path=fonts/, Extension=.ttf]
-  \newfontfamily\displaylight{SpecialGothic_Expanded-Regular}[Path=fonts/, Extension=.ttf]
-  \newfontfamily\displaymedium{SpecialGothic_Expanded-Medium}[Path=fonts/, Extension=.ttf]
+  % Display: Poppins ExtraBold (headlines, chapter titles, stats)
+  \newfontfamily\displayfont{Poppins-ExtraBold}[Path=fonts/, Extension=.ttf]
+  \newfontfamily\displaylight{Poppins-Light}[Path=fonts/, Extension=.ttf]
+  \newfontfamily\displaymedium{Poppins-Medium}[Path=fonts/, Extension=.ttf]
   % Strong bold for subheadings
-  \newfontfamily\strongbold{SpecialGothic-SemiBold}[Path=fonts/, Extension=.ttf]
-  % Fira Sans for pullquotes, captions, supporting text
-  \newfontfamily\seriffont{FiraSans-LightItalic}[Path=fonts/, Extension=.ttf]
-  \newfontfamily\firasans{FiraSans-Regular}[Path=fonts/, Extension=.ttf,
-    BoldFont=FiraSans-Bold, ItalicFont=FiraSans-Italic, BoldItalicFont=FiraSans-BoldItalic]
+  \newfontfamily\strongbold{Poppins-SemiBold}[Path=fonts/, Extension=.ttf]
+  % Pullquotes, captions, supporting text (Poppins Light Italic)
+  \newfontfamily\seriffont{Poppins-LightItalic}[Path=fonts/, Extension=.ttf]
+  \newfontfamily\firasans{Poppins-Regular}[Path=fonts/, Extension=.ttf,
+    BoldFont=Poppins-Bold, ItalicFont=Poppins-Italic, BoldItalicFont=Poppins-BoldItalic]
 \else
   \RequirePackage[utf8]{inputenc}\RequirePackage[T1]{fontenc}
   \RequirePackage{helvet}\renewcommand{\familydefault}{\sfdefault}
