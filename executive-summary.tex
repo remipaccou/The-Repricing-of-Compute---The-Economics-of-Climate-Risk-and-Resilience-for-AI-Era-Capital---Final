@@ -1,15 +1,16 @@
 % ============================================================================
-% executive-summary.tex — 2-page Executive Summary
+% executive-summary.tex — 2-3 page Executive Summary (compact layout)
 % ============================================================================
 \clearpage\thispagestyle{chapterstart}
 
-\vspace*{-12mm}
-{\displayfont\fontsize{32}{36}\selectfont\color{SEGreen}Executive Summary\par}
-\vspace{2mm}
-{\fontsize{9}{11}\selectfont\bfseries\color{SEBlack}R\'{e}mi Paccou\enspace\textnormal{\&}\enspace Thomas Epelbaum\par}
+\vspace*{-14mm}
+{\displayfont\fontsize{28}{32}\selectfont\color{SEGreen}Executive Summary\par}
+\vspace{1mm}
+{\fontsize{8}{10}\selectfont\bfseries\color{SEBlack}R\'{e}mi Paccou\enspace\textnormal{\&}\enspace Thomas Epelbaum\par}
 \vspace{2mm}
 
 \begin{multicols}{2}
+\setlength{\parskip}{1pt}
 
 \subsubsection*{Recognized, Not Yet Priced}
 
@@ -21,108 +22,76 @@ The financial signal is already visible. In 2025, global natural-catastrophe los
 
 The difficulty is straightforward. Operators, investors, and insurers lack the metrics to distinguish a resilient facility from an exposed one, to quantify how much value each hazard erodes, or to test whether adaptation generates a positive return. Without facility-level valuation, capital is allocated as if climate exposure were uniform---or negligible. The purpose of this paper is to replace that blind spot with clarity.
 
-\vspace{1mm}
-
 \subsubsection*{\textcolor{SEGreen}{This paper brings that clarity.}}
 
 \noindent No study currently quantifies how much climate risk the global data center sector carries, where it concentrates, through which channels it operates, and how it can be reduced. We measure this risk as \textit{enterprise value loss at facility level} across the global portfolio, combining three novelties.
 
 \textit{A climate-adjusted valuation model} translates physical hazards and transition risks into discounted cash flow impacts across five economic channels---cooling, carbon, business interruption, physical damage, heat productivity---producing auditable, facility-level estimates of enterprise value loss. The model is deliberately a white box: every parameter, physical and financial, is transparent and can be customized to an operator's or an investor's own assumptions. Shapley decomposition attributes each channel's contribution to specific hazards; Leontief input-output analysis propagates business interruption through upstream supply chains. Neither tool has previously been applied to this sector.
 
-\columnbreak
-
 \textit{A geocoded database} of 8{,}572 installed facilities (90.8~GW across 120~countries) is augmented by prospective AI-era infrastructure under three growth scenarios---Limits to Growth (+63~GW), Sustainable AI (+121~GW), Abundance Without Boundaries (+296~GW)---covering both the existing stock and the infrastructure whose climate exposure remains a design choice.
 
 \textit{A scenario architecture} crossing warming pathways, transition policies, AI growth trajectories, and adaptation strategies identifies which interventions generate positive risk-adjusted returns, and under which conditions. Calibrated here on data centers, the framework is portable to any physical asset class.
 
-\vspace{1mm}
-
 \subsubsection*{\textcolor{SEGreen}{Four findings.}}
-
-\vspace{0.5mm}
 
 \noindent\textbf{\textcolor{SEGreen}{\#1}}\enspace Climate risk represents roughly a third of current data center enterprise value---US\$388~billion on the installed base, scaling to US\$1.0--3.7~trillion once prospective AI infrastructure is included. Standard valuations leave this figure invisible; measuring it is the first step to managing it.
 
-\vspace{1mm}
-
 \noindent\textbf{\textcolor{SEGreen}{\#2}}\enspace A twofold dispersion in risk intensity across regions, driven by fundamentally different channel compositions, means clarity must be site-specific---uniform mitigation strategies leave value on the table.
-
-\vspace{1mm}
 
 \noindent\textbf{\textcolor{SEGreen}{\#3}}\enspace AI-era infrastructure carries roughly 2.6 times more physical risk per GW than the installed base, deepening an already physical-leaning profile: carbon costs fall from 28\% of risk on the installed base to just 6\% on AI-era assets.
 
-\vspace{1mm}
-
 \noindent\textbf{\textcolor{SEGreen}{\#4}}\enspace Proactive adaptation---PPAs, liquid cooling, microgrids, climate-informed siting---restores 30 to 39\% of exposed value at a positive return under every scenario tested. A structural residual of 61\% marks the boundary of what facility-level action alone can achieve, and where systemic resilience must take over.
-
-\vspace{1mm}
 
 \noindent Three case studies---in the US South, France, and southern China---show how the framework decomposes each site's risk into its economic channels and traces it through upstream supply chains, turning portfolio-level findings into site-specific engineering priorities.
 
-\vspace{1mm}
-
-% --- Key Messages (moved to page 1 for narrative flow) ---
 \subsubsection*{\textcolor{SEGreen}{Key messages.}}
-
-\vspace{0.5mm}
 
 \noindent\textbf{\textcolor{SEGreen}{1.}}\enspace Physical climate risk deserves the same analytical attention---and the same clarity---that the financial sector has spent a decade building for carbon. No equivalent toolkit yet exists for physical risk.
 
-\vspace{1mm}
-
 \noindent\textbf{\textcolor{SEGreen}{2.}}\enspace Pricing physical risk into infrastructure valuation requires facility-level granularity, channel-specific diagnostics, and supply chain visibility that aggregate portfolio approaches cannot provide.
 
-\vspace{1mm}
-
 \noindent\textbf{\textcolor{SEGreen}{3.}}\enspace Financial resilience is a system property, not a site property. Infrastructure does not fail in isolation---it fails with grids, supply chains, and interconnected services. Risk management that stops at the facility perimeter misses the dominant transmission channel.
-
-\vspace{1mm}
 
 \noindent\textbf{\textcolor{SEGreen}{4.}}\enspace Adaptation is most valuable when anticipated at the front end. The design choices being made today set climate exposure for the next quarter century, and building resilience in is far cheaper than retrofitting it later. Anticipation creates value; delay destroys it.
 
 \end{multicols}
 
-% ============================================================================
-% PAGE 2 — Infographic + Implications
-% ============================================================================
-\clearpage\thispagestyle{chapterstart}
-
-\vspace*{-6mm}
-
-% --- Infographic (prominent, full width) ---
+% --- Infographic (full width, no page break) ---
+\vspace{2mm}
 \begin{center}
 \includegraphics[width=\textwidth]{images/statstrip.png}
 \end{center}
 
-\vspace{3mm}
+\vspace{2mm}
 
 % --- Implications ---
-{\displayfont\fontsize{14}{18}\selectfont\color{SEGreen}Implications\par}
-\vspace{2mm}
+{\displayfont\fontsize{13}{16}\selectfont\color{SEGreen}Implications\par}
+\vspace{1mm}
 
 \begin{multicols}{2}
+\setlength{\parskip}{1pt}
 
-\noindent{\fontsize{10}{13}\selectfont\textbf{\color{SEGreen}Capital markets \& financial modelling.}}\\[1pt]
+\noindent{\fontsize{9}{11}\selectfont\textbf{\color{SEGreen}Capital markets \& financial modelling.}}\\[0pt]
 Physical climate risk lacks the anchor metrics that carbon intensity provides for transition risk---and that absence is an opening. Facility-level ClimVaR supplies the missing metric in a transparent, white-box format compatible with DCF models and disclosure frameworks. For the first time, investors can price physical exposure into capital allocation rather than around it, differentiate assets that look identical on paper, and identify mispriced opportunities before the market reprices them.
 
-\vspace{2mm}
+\vspace{1mm}
 
-\noindent{\fontsize{10}{13}\selectfont\textbf{\color{SEGreen}Operators, system planners \& insurers.}}\\[1pt]
-The same dollar of adaptation investment generates 2--3$\times$ different returns depending on location and channel composition---which means the upside of allocating it well is large. Channel-level attribution identifies which lever matters most at each site, turning a generic resilience budget into a targeted, return-maximizing one. The $\times$11 supply chain multiplier, once visible, becomes a lever in its own right: it reveals where systemic resilience pays off well beyond the facility perimeter. As an early application of input-output propagation to the sector, the estimate will sharpen as upstream data---on semiconductor and equipment dependencies in particular---improve.
+\noindent{\fontsize{9}{11}\selectfont\textbf{\color{SEGreen}Operators, system planners \& insurers.}}\\[0pt]
+The same dollar of adaptation investment generates 2--3$\times$ different returns depending on location and channel composition---which means the upside of allocating it well is large. Channel-level attribution identifies which lever matters most at each site, turning a generic resilience budget into a targeted, return-maximizing one. The $\times$11 supply chain multiplier, once visible, becomes a lever in its own right: it reveals where systemic resilience pays off well beyond the facility perimeter.
 
-\vspace{2mm}
+\vspace{1mm}
 
-\noindent{\fontsize{10}{13}\selectfont\textbf{\color{SEGreen}AI developers \& hyperscalers.}}\\[1pt]
+\noindent{\fontsize{9}{11}\selectfont\textbf{\color{SEGreen}AI developers \& hyperscalers.}}\\[0pt]
 The further concentration of risk into physical channels means that sustainability strategies centered on renewable procurement address less than 10\% of AI-era climate exposure. The other 90\% is where the advantage lies: physical resilience, designed in at the front end, is both the binding constraint and the lever competitors are not yet pulling. Build it early and it is cheap; the same protection retrofitted later costs several times more.
 
-\columnbreak
+\vspace{1mm}
 
-\noindent{\fontsize{10}{13}\selectfont\textbf{\color{SEGreen}Policymakers \& regulators.}}\\[1pt]
+\noindent{\fontsize{9}{11}\selectfont\textbf{\color{SEGreen}Policymakers \& regulators.}}\\[0pt]
 Data centers have shifted from commercial real estate to strategic infrastructure, but their climate exposure remains weakly integrated into permitting and prudential oversight. A facility-level metric makes targeted policy possible: climate-adjusted siting rules and infrastructure stress tests calibrated to actual financial exposure---steering capital toward resilient buildout rather than constraining it across the board.
 
-\vspace{2mm}
+\vspace{1mm}
 
-\noindent{\fontsize{10}{13}\selectfont\textbf{\color{SEGreen}Chief sustainability officers.}}\\[1pt]
+\noindent{\fontsize{9}{11}\selectfont\textbf{\color{SEGreen}Chief sustainability officers.}}\\[0pt]
 Climate reporting that stops at carbon emissions captures only a quarter of the exposure. Bringing the full five-channel picture into disclosure---cooling, business interruption, and physical damage alongside carbon---turns a reporting obligation into a strategic instrument: a credible, quantified basis for resilience investment that boards and investors can act on.
 
 \end{multicols}
