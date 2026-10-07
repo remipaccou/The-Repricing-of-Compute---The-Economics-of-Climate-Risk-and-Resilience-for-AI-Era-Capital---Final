@@ -11,11 +11,9 @@ Le titre, le sous-titre, les auteurs et la date d'origine sont conservés :
 **The Repricing of Compute**, **The Economics of Climate Risk and Resilience
 for AI-Era Capital**, **Rémi Paccou & Thomas Epelbaum**, **June 2026**.
 
-L'image reste `images/front_page.jpeg`. Comme elle est horizontale,
-`background-fit=height` ajuste sa hauteur à la page A4 et recadre les côtés
-par centrage, sans déformer la photographie. L'assombrissement est noir et
-transparent, sans filtre vert. Le mode `stretch` reste disponible pour reprendre
-le comportement du modèle initial.
+L'image reste `images/Front_Page.jpeg`, avec le même placement pleine page
+que dans la couverture d'origine. Aucun recadrage n'est appliqué et le fichier
+image n'est pas modifié. L'assombrissement est noir et transparent, sans filtre vert.
 
 La bibliothèque `seri-digital-cover.sty` et les ressources `seri-digital-assets/`
 sont fournies dans ce projet. Les quatre symboles sont inclus en PDF et SVG,

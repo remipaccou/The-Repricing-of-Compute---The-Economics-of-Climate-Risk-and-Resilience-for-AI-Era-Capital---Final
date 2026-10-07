@@ -21,8 +21,6 @@
 \newdimen\seri@ux
 \newdimen\seri@uy
 \def\seri@background{}
-\def\seri@backgroundfit{stretch}
-\def\seri@heightfit{height}
 \def\seri@authors{}
 \def\seri@date{}
 \def\seri@title{}
@@ -34,9 +32,6 @@
   \SERICoverDomainLine{244}{infrastructure}}
 \pgfkeys{/seri cover/.is family,/seri cover,
   background/.store in=\seri@background,
-  background-fit/.is choice,
-  background-fit/stretch/.code={\def\seri@backgroundfit{stretch}},
-  background-fit/height/.code={\def\seri@backgroundfit{height}},
   authors/.store in=\seri@authors,
   date/.store in=\seri@date,
   title/.store in=\seri@title,
@@ -85,14 +80,8 @@
     \begin{tikzpicture}[remember picture,overlay]
       \begin{scope}[shift={(current page.north west)},x=\seri@ux,y=-\seri@uy]
         \clip (0,0) rectangle (1000,1414);
-        % Height fit clips a landscape photograph at the page edges, without stretching.
-        \ifx\seri@backgroundfit\seri@heightfit
-          \node[anchor=center,inner sep=0pt,outer sep=0pt] at (500,707)
-            {\includegraphics[height=\paperheight]{\seri@background}};
-        \else
         \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (0,0)
           {\includegraphics[width=\paperwidth,height=\paperheight]{\seri@background}};
-        \fi
         % Neutral black shading preserves the photograph's original colours.
         \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (0,0)
           {\includegraphics[width=\paperwidth,height=\paperheight]
