@@ -3,7 +3,10 @@
 % Schneider Electric Research Institute
 % Compile with XeLaTeX + BibTeX
 % =============================================================================
+% Forward colour options before TikZ loads xcolor in the existing class.
+\PassOptionsToPackage{table,dvipsnames}{xcolor}
 \documentclass{seri-report}
+\usepackage{seri-digital-cover}
 
 \doctitle{The Repricing\\ of Compute}
 \docsubtitle{The Economics of Climate Risk and Resilience\\ for AI-Era Capital}

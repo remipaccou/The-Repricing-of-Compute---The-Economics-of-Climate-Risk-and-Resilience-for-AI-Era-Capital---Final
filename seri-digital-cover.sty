@@ -1,0 +1,134 @@
+% SERI Digital Research cover — approved continuous-line composition.
+% Compile with XeLaTeX or LuaLaTeX. All text remains editable.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{seri-digital-cover}[2026/10/06 SERI Digital Research cover v1.0]
+\RequirePackage{iftex}
+\ifPDFTeX
+  \PackageError{seri-digital-cover}{Use XeLaTeX or LuaLaTeX}{The cover uses bundled Poppins fonts.}
+\fi
+\RequirePackage{fontspec}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\RequirePackage{eso-pic}
+\usetikzlibrary{calc}
+\providecommand{\SERIFontPath}{fonts/}
+\providecommand{\SERICoverAssetPath}{seri-digital-assets/}
+\newfontfamily\SERIRegular{Poppins-Regular}[
+  Path=\SERIFontPath,Extension=.ttf,BoldFont=Poppins-ExtraBold,
+  ItalicFont=Poppins-Italic,BoldItalicFont=Poppins-BoldItalic]
+\definecolor{SERILifeGreen}{HTML}{3DCD58}
+\newdimen\seri@ux
+\newdimen\seri@uy
+\def\seri@background{}
+\def\seri@backgroundfit{stretch}
+\def\seri@heightfit{height}
+\def\seri@authors{}
+\def\seri@date{}
+\def\seri@title{}
+\def\seri@subtitle{}
+\def\seri@domain{infrastructure}
+\def\seri@domainlines{%
+  \SERICoverDomainLine{178}{The new}%
+  \SERICoverDomainLine{211}{electro-digital}%
+  \SERICoverDomainLine{244}{infrastructure}}
+\pgfkeys{/seri cover/.is family,/seri cover,
+  background/.store in=\seri@background,
+  background-fit/.is choice,
+  background-fit/stretch/.code={\def\seri@backgroundfit{stretch}},
+  background-fit/height/.code={\def\seri@backgroundfit{height}},
+  authors/.store in=\seri@authors,
+  date/.store in=\seri@date,
+  title/.store in=\seri@title,
+  subtitle/.store in=\seri@subtitle,
+  domain/.is choice,
+  domain/infrastructure/.code={%
+    \def\seri@domain{infrastructure}%
+    \def\seri@domainlines{\SERICoverDomainLine{178}{The new}%
+      \SERICoverDomainLine{211}{electro-digital}%
+      \SERICoverDomainLine{244}{infrastructure}}},
+  domain/energy-systems/.code={%
+    \def\seri@domain{energy-systems}%
+    \def\seri@domainlines{\SERICoverDomainLine{178}{Digitalization}%
+      \SERICoverDomainLine{211}{and the future of}%
+      \SERICoverDomainLine{244}{energy systems}}},
+  domain/economic-transformation/.code={%
+    \def\seri@domain{economic-transformation}%
+    \def\seri@domainlines{\SERICoverDomainLine{178}{Digitalization}%
+      \SERICoverDomainLine{211}{and the}%
+      \SERICoverDomainLine{244}{transformation}%
+      \SERICoverDomainLine{277}{of the economy}}},
+  domain/systemic-change/.code={%
+    \def\seri@domain{systemic-change}%
+    \def\seri@domainlines{\SERICoverDomainLine{178}{Digitalization}%
+      \SERICoverDomainLine{211}{and systemic}%
+      \SERICoverDomainLine{244}{change}}}}
+\newcommand{\SERICoverSetup}[1]{\pgfkeys{/seri cover,#1}}
+% Coordinates use the approved 1000 x 1414 artboard: x from left, y from top.
+% Font sizes are expressed in artboard units and scale with the page width.
+\newcommand{\seri@font}[1]{\SERIRegular
+  \fontsize{\dimexpr#1\seri@ux\relax}{\dimexpr#1\seri@ux\relax}\selectfont}
+\newcommand{\seri@left}[4]{%
+  \node[anchor=base west,inner sep=0pt,outer sep=0pt,text=white]
+    at (#1,#2) {{\seri@font{#3}#4}};}
+\newcommand{\SERICoverTitleLine}[3]{\seri@left{84}{#1}{#2}{#3}}
+\newcommand{\SERICoverSubtitleLine}[2]{\seri@left{84}{#1}{24}{#2}}
+\newcommand{\SERICoverDomainLine}[2]{%
+  \node[anchor=base east,inner sep=0pt,outer sep=0pt,text=white]
+    at (916,#1) {{\seri@font{23}#2}};}
+\newcommand{\makeSERIDigitalCover}{%
+  \clearpage\thispagestyle{empty}%
+  \AddToShipoutPictureFG*{%
+    \begingroup
+    \seri@ux=\dimexpr\paperwidth/1000\relax
+    \seri@uy=\dimexpr\paperheight/1414\relax
+    \begin{tikzpicture}[remember picture,overlay]
+      \begin{scope}[shift={(current page.north west)},x=\seri@ux,y=-\seri@uy]
+        \clip (0,0) rectangle (1000,1414);
+        % Height fit clips a landscape photograph at the page edges, without stretching.
+        \ifx\seri@backgroundfit\seri@heightfit
+          \node[anchor=center,inner sep=0pt,outer sep=0pt] at (500,707)
+            {\includegraphics[height=\paperheight]{\seri@background}};
+        \else
+        \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (0,0)
+          {\includegraphics[width=\paperwidth,height=\paperheight]{\seri@background}};
+        \fi
+        % Neutral black shading preserves the photograph's original colours.
+        \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (0,0)
+          {\includegraphics[width=\paperwidth,height=\paperheight]
+            {\SERICoverAssetPath neutral-shade.png}};
+        \seri@left{84}{104}{30}{Digital Research}
+        \seri@left{84}{178}{23}{Schneider Electric}
+        \seri@left{84}{211}{23}{Research Institute}
+        \seri@domainlines
+        \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (820,44)
+          {\includegraphics[width=\dimexpr96\seri@ux\relax,
+            height=\dimexpr96\seri@uy\relax]
+            {\SERICoverAssetPath\seri@domain.pdf}};
+        % Continuous horizontal line, centred on the wordmark and symbol.
+        \fill[white,opacity=.7] (360,91.2) rectangle (794,92.8);
+        % White vertical rule with the approved four-stop opacity fade.
+        \foreach \j in {0,...,461} {%
+          \pgfmathsetmacro{\seri@t}{\j/461}%
+          \pgfmathsetmacro{\seri@alpha}{%
+            \seri@t<.32 ? .9-.4*\seri@t/.32 :
+            (\seri@t<.75 ? .5-.32*(\seri@t-.32)/.43 :
+            .18-.14*(\seri@t-.75)/.25)}%
+          \fill[white,opacity=\seri@alpha]
+            (916,{355+2*\j}) rectangle (917.6,{357+2*\j});}
+        \seri@title
+        \fill[SERILifeGreen] (84,1010) rectangle (128,1012);
+        \seri@subtitle
+        \seri@left{84}{1301}{19}{\seri@authors}
+        \seri@left{84}{1341}{19}{\seri@date}
+        % Includes the official PNG's transparent padding: visible right=916,
+        % visible bottom aligned with the date; do not move by its file bounds.
+        \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (777.7,1299.63)
+          {\includegraphics[width=\dimexpr150\seri@ux\relax,
+            height=\dimexpr52.2\seri@uy\relax]
+            {\SERICoverAssetPath logo_se_white_screen.png}};
+      \end{scope}
+    \end{tikzpicture}
+    \endgroup}
+  \null\clearpage}
+\endinput
