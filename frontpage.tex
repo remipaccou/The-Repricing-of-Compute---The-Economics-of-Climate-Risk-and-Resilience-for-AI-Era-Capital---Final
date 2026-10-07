@@ -1,4 +1,19 @@
-% ============================================================================
-% frontpage.tex — Cover page (full-bleed image, Microgrids style)
-% ============================================================================
-\makecover
+% SERI Digital Research — standard continuous-line composition.
+% Domain 4: Digitalization and systemic change.
+% The original landscape photograph is centred and cropped, without stretching.
+\makeatletter
+\SERICoverSetup{
+  background={\@coverimage},
+  background-fit=height,
+  domain=systemic-change,
+  authors={\@docauthors},
+  date={\@docdate},
+  title={%
+    \SERICoverTitleLine{850}{86}{The Repricing}%
+    \SERICoverTitleLine{955}{86}{\bfseries of Compute}},
+  subtitle={%
+    \SERICoverSubtitleLine{1097}{The Economics of Climate Risk and Resilience}%
+    \SERICoverSubtitleLine{1136}{for AI-Era Capital}}
+}
+\makeatother
+\makeSERIDigitalCover
