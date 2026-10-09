@@ -25,15 +25,15 @@
     BoldItalicFont=Poppins-BoldItalic]
   \renewcommand{\familydefault}{\sfdefault}
   % Display: Poppins ExtraBold (headlines, chapter titles, stats)
-  \newfontfamily\displayfont{Poppins-ExtraBold}[Path=fonts/, Extension=.ttf]
-  \newfontfamily\displaylight{Poppins-Light}[Path=fonts/, Extension=.ttf]
-  \newfontfamily\displaymedium{Poppins-Medium}[Path=fonts/, Extension=.ttf]
+  \newfontfamily\displayfont{Poppins-ExtraBold}[Path=fonts/, Extension=.ttf, Ligatures=TeX]
+  \newfontfamily\displaylight{Poppins-Light}[Path=fonts/, Extension=.ttf, Ligatures=TeX]
+  \newfontfamily\displaymedium{Poppins-Medium}[Path=fonts/, Extension=.ttf, Ligatures=TeX]
   % Strong bold for subheadings
-  \newfontfamily\strongbold{Poppins-SemiBold}[Path=fonts/, Extension=.ttf]
+  \newfontfamily\strongbold{Poppins-SemiBold}[Path=fonts/, Extension=.ttf, Ligatures=TeX]
   % Pullquotes, captions, supporting text (Poppins Light Italic)
-  \newfontfamily\seriffont{Poppins-LightItalic}[Path=fonts/, Extension=.ttf]
+  \newfontfamily\seriffont{Poppins-LightItalic}[Path=fonts/, Extension=.ttf, Ligatures=TeX]
   \newfontfamily\firasans{Poppins-Regular}[Path=fonts/, Extension=.ttf,
-    BoldFont=Poppins-Bold, ItalicFont=Poppins-Italic, BoldItalicFont=Poppins-BoldItalic]
+    BoldFont=Poppins-Bold, ItalicFont=Poppins-Italic, BoldItalicFont=Poppins-BoldItalic, Ligatures=TeX]
 \else
   \RequirePackage[utf8]{inputenc}\RequirePackage[T1]{fontenc}
   \RequirePackage{helvet}\renewcommand{\familydefault}{\sfdefault}
@@ -377,7 +377,7 @@
 \DeclareMathOperator{\CDF}{CDF}
 
 \newcommand{\greensep}{\vspace{3pt}\noindent\textcolor{SEGreen}{\rule{35pt}{1.5pt}}\vspace{3pt}}
-\newcommand{\exhibitcaption}[2]{{\fontsize{8}{10}\selectfont\color{SEGreen}Exhibit #1.\enspace\color{SEBody}#2\par}\vspace{2pt}}
+\newcommand{\exhibitcaption}[2]{{\fontsize{8}{10}\selectfont\color{SEGreen}Exhibit #1.\enspace\color{SEBody}#2\label{exh:#1}\par}\vspace{2pt}}
 \newcommand{\exhibitsource}[1]{\par\vspace{1pt}{\fontsize{7}{8}\selectfont\itshape\color{SESubtitle}#1}\par}
 \newcommand{\sectionsubtitle}[1]{{\displaylight\fontsize{14}{18}\selectfont\color{SESubtitle}#1}\vspace{3mm}}
 \renewcommand{\footnoterule}{\vspace{2pt}\noindent\textcolor{SELightGray}{\rule{0.3\textwidth}{0.3pt}}\vspace{2pt}}
