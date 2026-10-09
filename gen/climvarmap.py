@@ -23,6 +23,9 @@ UNAVAILABLE = "#D9DCD8"   # darker than the lowest bin, so low-risk countries st
 EDGE = "white"
 # Natural Earth codes that differ from the ClimVaR country codes
 ALIAS = {"CW": "AN", "SX": "AN", "GB": "GB", "XK": "XK"}
+# Territories Natural Earth files under their sovereign's code but the ClimVaR
+# data reports separately (as in NAME_TO_INPUT_ISO of the map_templates)
+BY_NAME = {"Indian Ocean Territories": "OT"}
 
 
 def load_values(path, column):
@@ -34,6 +37,8 @@ def world():
     w = gpd.read_file(f"zip://{NE}")
     code = w["ISO_A2_EH"].where(w["ISO_A2_EH"] != "-99", w["ISO_A2"])
     w["iso2"] = code.replace(ALIAS)
+    for admin, iso in BY_NAME.items():
+        w.loc[w["ADMIN"] == admin, "iso2"] = iso
     # Natural Earth draws Morocco to the de facto line; shade it to 27°40'N,
     # the internationally recognized boundary, and leave Western Sahara apart.
     ma, eh = w["iso2"] == "MA", w["iso2"] == "EH"
