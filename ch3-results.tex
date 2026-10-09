@@ -69,15 +69,15 @@ Just as importantly, \textbf{risk intensity increases with AI scale}. Installed-
 % ---- Transmission mechanism ----
 \vspace{2mm}
 
-\subsection*{The Transmission Mechanism}
+\subsection*{The Transmission Mechanism}\label{toc:transmission}
 \sectionsubtitle{How hazards propagate through risk channels to erode enterprise value}
 \greensep
 
 \exhibitcaption{11}{The transmission map: hazards to enterprise value loss.}
 \begin{center}
-\includegraphics[width=\textwidth]{images/exhibit11_sankey.png}
+\includegraphics[width=\textwidth]{images/ex_sankey.pdf}
 \end{center}
-\exhibitsource{Seven hazards propagate through four principal risk channels to erode enterprise value. Ribbon width proportional to US\$ value. Shapley attribution for hazard-to-channel mapping. BAU/MEAN, installed base.}
+\exhibitsource{Ribbon width proportional to US\$ value. Channel and scope totals: V8 model results. Hazard totals: Shapley attribution. The hazard-to-channel split of wind and flood is indicative, set to close each channel total; ``Unattributed'' is the gap between the published hazard totals and the channel totals. BAU/MEAN, installed base.}
 
 \begin{twocolbody}
 
@@ -106,7 +106,7 @@ This is also why Shapley decomposition is essential to the framework. Without it
 % ==============================================================================
 \clearpage\thispagestyle{chapterstart}
 
-{\color{SEGreen}\subsection*{Finding 1: Unpriced Exposure}}
+{\color{SEGreen}\subsection*{Finding 1: Unpriced Exposure}\label{toc:f1}}
 \sectionsubtitle{Climate risk erodes 38\% of current data center asset value}
 \greensep
 
@@ -178,15 +178,15 @@ Heat productivity ($\xi$) & 2.4 & 1\% & Worker/equipment efficiency loss \\
 % ==============================================================================
 \clearpage\thispagestyle{chapterstart}
 
-{\color{SEGreen}\subsection*{Finding 1: Unpriced Exposure}}
+{\color{SEGreen}\subsection*{Unpriced Exposure}}
 \sectionsubtitle{Four regions, five channels, and the geography of \$388 billion}
 \greensep
 
 \exhibitcaption{13}{US\$388 billion decomposed: four regions, five channels, one treemap.}
 \begin{center}
-\includegraphics[width=\textwidth]{images/exhibit13_treemap.png}
+\includegraphics[width=\textwidth]{images/ex_treemap.pdf}
 \end{center}
-\exhibitsource{Area proportional to ClimVaR in US\$B. Outer rectangles = regions; inner tiles = risk channels. BAU/MEAN, installed base. The dominant tile in each region identifies the primary adaptation lever.}
+\exhibitsource{Area proportional to ClimVaR in US\$B. Each block is a region, each tile a risk channel. BAU/MEAN, installed base. The largest tile in each region identifies the primary adaptation lever.}
 
 \begin{twocolbody}
 {\color{SEGreen}\textbf{One map, two dimensions of exposure}}
@@ -215,7 +215,7 @@ Heat productivity ($\xi$) & 2.4 & 1\% & Worker/equipment efficiency loss \\
 
 \vspace{6mm}
 
-\subsection*{Finding 2: Geographic Dispersion}
+\subsection*{Finding 2: Geographic Dispersion}\label{toc:f2}
 \sectionsubtitle{Unevenly distributed, differently composed}
 \greensep
 
@@ -287,25 +287,26 @@ This is where the model becomes operationally powerful. It makes visible not onl
 % ==============================================================================
 \vspace{4mm}
 
-\subsection*{Finding 2: Geographic Dispersion}
+\subsection*{Geographic Dispersion}
 \sectionsubtitle{Why adaptation must be targeted, not standardized}
 \greensep
 
-\exhibitcaption{15}{Four fingerprints: regional channel composition as radar overlay.}
+\exhibitcaption{15}{ClimVaR by country: where the dollars sit, and where the risk is most intense.}
 \begin{center}
-\includegraphics[width=0.72\textwidth]{images/exhibit15_radar.png}
+\includegraphics[width=0.86\textwidth]{images/ex_map_abs.pdf}\\[3mm]
+\includegraphics[width=0.86\textwidth]{images/ex_map_pct.pdf}
 \end{center}
-\exhibitsource{Each polygon is one region's channel fingerprint, expressed as \% of regional ClimVaR. The asymmetry between shapes shows why a uniform adaptation strategy fails. BAU/MEAN, installed base.}
+\exhibitsource{Top: absolute ClimVaR in US\$ billions. Bottom: ClimVaR as a share of the enterprise value installed in each country. Grey: no facility in the database. BAU/MEAN, installed base.}
 
 \begin{twocolbody}
 
-{\color{SEGreen}\textbf{What the radar chart reveals}}
+{\color{SEGreen}\textbf{What the maps reveal}}
 
 \vspace{1mm}
 
-\noindent The radar shows what tables cannot: regions differ not only in \emph{how much} ClimVaR they carry, but in \emph{how they carry it}. Each geography has a distinct risk fingerprint. The United States is pulled outward by business interruption, Europe by carbon, China by a multi-channel structure, and APMEA by a flatter profile. These shapes matter because adaptation strategies act on shapes, not just on totals.
+\noindent The two maps answer different questions. The first shows where the dollars are: China (US\$111B) and the United States (US\$108B) each carry about a quarter of the total, followed at a distance by Ireland, the United Kingdom, Japan, Germany, India and the Netherlands. The second shows where the risk is most intense relative to the value at stake, and the ranking changes. Thailand, the Republic of the Congo, the Democratic Republic of the Congo, Sudan and India carry a ClimVaR above their entire installed enterprise value, while the United States stays below 30\%. Large markets concentrate the exposure; smaller and fast-growing markets concentrate the intensity.
 
-The table says that Europe is highly exposed and highly responsive to proactive adaptation; the radar explains why. Carbon dominates its risk architecture, and carbon is a channel where targeted interventions have strong effect. China, by contrast, shows no single dominant channel, so narrow measures have limited leverage unless they are combined.
+Read together with the regional decomposition of Exhibit~13, the maps show why a uniform adaptation strategy fails. Europe is highly exposed and highly responsive to proactive adaptation because carbon dominates its risk architecture, and carbon is a channel where targeted interventions have strong effect. China, by contrast, shows no single dominant channel, so narrow measures have limited leverage unless they are combined.
 
 \vspace{3mm}
 {\color{SEGreen}\textbf{Four regions, four adaptation logics}}
@@ -334,7 +335,7 @@ The framework matters beyond the headline estimate because it offers a white-box
 
 \clearpage\thispagestyle{chapterstart}
 
-\subsection*{Finding 3: AI Amplification}
+\subsection*{Finding 3: AI Amplification}\label{toc:f3}
 \sectionsubtitle{AI-era infrastructure carries $\times$2.6 the physical risk per GW}
 \greensep
 
@@ -402,15 +403,15 @@ For investors and operators, the implication is straightforward. A climate strat
 
 \clearpage\thispagestyle{chapterstart}
 
-\subsection*{Finding 3: AI Amplification}
+\subsection*{AI Amplification}
 \sectionsubtitle{Across all AI scenarios, proactive adaptation bends but does not erase the risk curve}
 \greensep
 
 \exhibitcaption{17}{ClimVaR trajectories by AI growth scenario, with and without proactive adaptation (installed base + AI-tier).}
 \begin{center}
-\includegraphics[width=1\textwidth]{images/exhibit22_ribbons.png}
+\includegraphics[width=1\textwidth]{images/ex_ribbons.pdf}
 \end{center}
-\exhibitsource{Baseline (solid) vs. Proactive adaptation (dashed) under three AI growth scenarios: Limits to Growth, Sustainable AI, Abundance Without Boundaries. Values cumulative over asset lifetimes.}
+\exhibitsource{Baseline (solid) and proactive adaptation (dashed) under three AI growth scenarios; the shaded band between them is the value adaptation protects. End points are V8 model results; the paths between 2026 and 2050 are indicative. Values cumulative over asset lifetimes.}
 
 \begin{pullquote}
 The AI build-out does not replicate the installed base's risk profile---it inverts it. Net-zero commitments address 28\% of the exposure on legacy assets but less than 7\% on AI infrastructure. Physical resilience, not energy sourcing, is the binding constraint.
@@ -439,7 +440,7 @@ A second message is methodological. The \(\times 2.6\) amplification factor mixe
 
 \clearpage\thispagestyle{chapterstart}
 
-\subsection*{Finding 4: The Adaptation Dividend}
+\subsection*{Finding 4: The Adaptation Dividend}\label{toc:f4}
 \sectionsubtitle{Adaptation always pays: net exposure falls by 30--39\%}
 \greensep
 
@@ -472,9 +473,9 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 \vspace{2mm}
 \exhibitcaption{19}{The adaptation effect: US\$150 billion in net protected value, channel by channel.}
 \begin{center}
-\includegraphics[width=\textwidth]{images/exhibit17_butterfly.png}
+\includegraphics[width=\textwidth]{images/ex_butterfly.pdf}
 \end{center}
-\exhibitsource{Left = Baseline; right = Proactive residual. Central badges = net reduction. BAU/MEAN, installed base.}
+\exhibitsource{Outline: baseline ClimVaR. Filled: residual after proactive adaptation. Reductions as reported by the V8 model. BAU/MEAN, installed base.}
 
 \begin{twocolbody}
 
@@ -486,12 +487,12 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 % FINDING 4 — PAGE 2 of 2
 % ==============================================================================
 
-\vspace{4mm}
+\clearpage
 \exhibitcaption{20}{Channel-by-channel waterfall from Baseline to Proactive.}
 \begin{center}
-\includegraphics[width=\textwidth]{images/exhibit20_waterfall.png}
+\includegraphics[width=\textwidth]{images/ex_waterfall.pdf}
 \end{center}
-\exhibitsource{Each step = one channel's contribution to the US\$150B reduction.}
+\exhibitsource{Each step is one channel's contribution to the US\$150B reduction, net of adaptation cost. V8 model results, BAU/MEAN, installed base.}
  
 \begin{twocolbody}
  
@@ -502,9 +503,9 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 \vspace{2mm}
 \exhibitcaption{21}{Marginal abatement cost of climate risk: all ten actions below break-even.}
 \begin{center}
-\includegraphics[width=\textwidth]{images/exhibit21_macc.png}
+\includegraphics[width=\textwidth]{images/ex_macc.pdf}
 \end{center}
-\exhibitsource{All ten actions generate net positive returns. PPAs (US\$0.04/\$ saved), thermal shift, and liquid cooling at design stage are greenfield interventions where resilience is designed in, not retrofitted. The most expensive lever still costs US\$0.65 per dollar of ClimVaR reduced---well below break-even. Action costs calibrated to industry benchmarks.}
+\exhibitsource{All ten actions return more than they cost. PPAs (US\$0.04 per dollar protected), thermal shift and liquid cooling at design stage are greenfield interventions. The most expensive lever, wind enclosure, costs US\$0.65 per dollar of ClimVaR reduced. Action costs calibrated to industry benchmarks, BAU/MEAN.}
 
 % ==============================================================================
 % FINDING 4 — PAGE 3: SYNTHESIS — FROM DIAGNOSIS TO STRATEGY
@@ -512,7 +513,7 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 
 \clearpage\thispagestyle{chapterstart}
 
-\subsection*{Finding 4: The Adaptation Dividend}
+\subsection*{The Adaptation Dividend}
 \sectionsubtitle{From diagnosis to strategy: scenario sensitivity and the logic of proactive action}
 \greensep
 
@@ -551,12 +552,33 @@ For colocation providers and enterprise operators with large installed bases, Pr
 \begin{pullquote}
 All ten adaptation levers create net value. The cheapest resilience is designed in, not retrofitted. Every year of delay narrows the technical options and raises the cost per dollar of risk reduced.
 \end{pullquote}
+
+\clearpage\thispagestyle{chapterstart}
+
+\subsection*{The Adaptation Dividend}
+\sectionsubtitle{The clock: how much of the loss arrives in the next five years}
+\greensep
+
+\exhibitcaption{22}{ClimVaR falling in the next five years, by country.}
+\begin{center}
+\includegraphics[width=0.86\textwidth]{images/ex_map_temporal_pct.pdf}\\[3mm]
+\includegraphics[width=0.86\textwidth]{images/ex_map_temporal_abs.pdf}
+\end{center}
+\exhibitsource{Top: share of each country's ClimVaR that falls within the next five years. Bottom: the same loss in US\$ billions. Grey: no facility in the database. BAU/MEAN, installed base.}
+
+\begin{twocolbody}
+
+\noindent The two maps cut the same ClimVaR by time. They show the share of each country's loss that falls within the next five years, and the amount it represents. Across the database, roughly a quarter of ClimVaR is expected within that window. In China, 28\% of the loss arrives in the next five years, about US\$31B; in the United States, 18\%, about US\$19B. In India and in much of sub-Saharan Africa the share exceeds 40\%, so that the risk there belongs to the current investment cycle rather than to the 2040s.
+
+This is the timing argument for proactive adaptation. A loss that arrives within five years falls inside the depreciation horizon of assets already in service, and inside the payback period of the measures that could reduce it. Waiting for better information has a cost, and the maps show where that cost is highest.
+
+\end{twocolbody}
  
 % CASE STUDIES
 % ==============================================================================
 \clearpage\thispagestyle{chapterstart}
 
-\subsection*{Three Case Studies}
+\subsection*{Three Case Studies}\label{toc:cases}
 \sectionsubtitle{Translating aggregate patterns into site-level decisions}
 \greensep
 
@@ -567,7 +589,7 @@ All ten adaptation levers create net value. The cheapest resilience is designed 
 \end{twocolbody}
 
 \vspace{2mm}
-\exhibitcaption{22}{Three prospective AI facilities: site characteristics and ClimVaR decomposition (BAU/MEAN).}
+\exhibitcaption{23}{Three prospective AI facilities: site characteristics and ClimVaR decomposition (BAU/MEAN).}
 
 \begin{center}
 \datatablesetup
@@ -618,7 +640,7 @@ Heat productivity         & \$11M (1\%)         & \$6M ($<$1\%)      & \$4M (1\%
 
 \clearpage\thispagestyle{chapterstart}
 
-\exhibitcaption{23}{Hazard attribution (Shapley) and propagation pathway (Leontief) at three sites.}
+\exhibitcaption{24}{Hazard attribution (Shapley) and propagation pathway (Leontief) at three sites.}
 
 \begin{center}
 \datatablesetup
@@ -645,11 +667,11 @@ Supply chain (indirect) & $>$99\% & 98\% & 98\% \\
 
 \exhibitsource{Shapley: 32 coalitions per facility. Leontief: OECD MRIOT 2023.}
 
-\exhibitcaption{24}{Three sites, three risk profiles: channel decomposition at facility level.}
+\exhibitcaption{25}{Three sites, three risk structures: channel decomposition at facility level.}
 \begin{center}
-\includegraphics[width=0.90\textwidth]{images/exhibit22_triptych.png}
+\includegraphics[width=\textwidth]{images/ex_cases.pdf}
 \end{center}
-\exhibitsource{Radar overlay: each polygon is one facility's channel fingerprint (\% of site-level ClimVaR). Site~A stretches toward BI and Cooling; Site~B collapses onto Damage; Site~C is balanced. Overlaying profiles makes the contrast between risk architectures immediately visible.}
+\exhibitsource{Share of site-level ClimVaR by channel, from Exhibit~23. Site~A leans on interruption and cooling, Site~B on damage, Site~C spreads across interruption, carbon and cooling.}
 
 % Advisory Services box moved to standalone page after Chapter IV — see advisory-box.tex
 
@@ -658,7 +680,7 @@ Supply chain (indirect) & $>$99\% & 98\% & 98\% \\
 % ==============================================================================
 \clearpage\thispagestyle{chapterstart}
 
-\subsection*{Discussion}
+\subsection*{Discussion}\label{toc:discussion}
 \sectionsubtitle{Interpretation and systemic implications}
 \greensep
 
@@ -666,17 +688,17 @@ Supply chain (indirect) & $>$99\% & 98\% & 98\% \\
 
 \subsubsection*{The \$388 Billion Baseline in Context}
 
-\noindent The US\$388~billion ClimVaR on the installed base (38.3\% of enterprise value) can be situated against three reference points. The WEF/S\&P aggregate of US\$3.3~trillion by 2055 operates at a different analytical level, but the order of magnitude is consistent when discounting and scope differences are accounted for \citep{wef2025}. XDI covers comparable facility counts but reports structural damage metrics rather than enterprise value loss; our framework extends this by adding cooling stress, carbon pricing, and supply chain propagation---channels that account for 65--75\% of total ClimVaR \citep{xdi2025}. Dietz et al.\ (2016) estimated 1.8\% of global financial assets at risk; the 38\% intensity for data centers reflects the sector's higher exposure through energy costs, uptime requirements, and supply chain concentration.
+\noindent The US\$388~billion ClimVaR on the installed base (38.3\% of enterprise value) can be situated against three reference points. The WEF/S\&P aggregate of US\$3.3~trillion by 2055 operates at a different analytical level, but the order of magnitude is consistent when discounting and scope differences are accounted for \citep{wef2025}. XDI covers comparable facility counts but reports structural damage metrics rather than enterprise value loss; our framework extends this by adding cooling stress, carbon pricing, and supply chain propagation---channels that account for 65--75\% of total ClimVaR \citep{xdi2025}. Dietz et al.\ (2016) estimated 1.8\% of global financial assets at risk; the 38\% intensity for data centers reflects the sector's higher exposure through energy costs, uptime requirements, and business interruption supply chain amplification.
 
 The \$388B figure represents a lower bound on total economic exposure. The framework quantifies private financial risk but does not capture systemic externalities: grid strain from concentrated AI load, water resource competition between data centers and agriculture, community displacement from extreme events, or the cascading economic effects of simultaneous service interruptions across interconnected facilities. These excluded channels would increase, not decrease, the total.
 
 The gap between 38\% enterprise value erosion and zero in standard DCF valuations quantifies the mispricing. Concurrent work in portfolio management confirms this gap from the asset allocation side: \citet{luciani2026} show that physical climate risk lacks the standardized anchor metric equivalent to carbon intensity, and that reducing portfolio-level physical exposure beyond 10\% destabilizes diversified portfolios---the facility-level ClimVaR framework developed here is designed to provide this missing metric.
 
-\subsubsection*{The Supply Chain Multiplier}
+\subsubsection*{Business Interruption Supply Chain Amplification}
 
-The $\times$11 ratio of supply chain to direct business interruption is the most consequential finding for risk management practice. At all three case study sites, 98--99\% of business interruption propagates through supply chains rather than from direct on-site hazards. Taiwan accounts for over 60\% of advanced semiconductor fabrication; large power transformers carry 12--24 month lead times; high-bandwidth memory production concentrates in South Korea. A single typhoon disrupting TSMC operations would propagate through every data center in the global portfolio via the Leontief inverse \citep{verdantix2024}.
+The $\times$11 business interruption supply chain amplification, the ratio of supply chain to direct business interruption, is the most consequential finding for risk management practice. At all three case study sites, 98--99\% of business interruption propagates through supply chains rather than from direct on-site hazards. Taiwan accounts for over 60\% of advanced semiconductor fabrication; large power transformers carry 12--24 month lead times; high-bandwidth memory production concentrates in South Korea. A single typhoon disrupting TSMC operations would propagate through every data center in the global portfolio via the Leontief inverse \citep{verdantix2024}.
 
-The Leontief framework assumes fixed technical coefficients---firms cannot reroute sourcing under stress. Long-duration disruptions are partially attenuated by adaptive behavior not captured in the model. The $\times$11 multiplier is an upper bound for prolonged disruptions and a reasonable estimate for acute shocks. More fundamentally, the approach relies on aggregate multi-regional input-output tables rather than on the actual supply chain of each facility. Where facility-specific procurement data are available---bills of materials, qualified vendor lists, logistics routing---they should replace the MRIOT coefficients, yielding sharper estimates of both the multiplier and its geographic decomposition. The present results establish the order of magnitude and the direction; facility-level supply chain audits are the natural next step.
+The Leontief framework assumes fixed technical coefficients---firms cannot reroute sourcing under stress. Long-duration disruptions are partially attenuated by adaptive behavior not captured in the model. The $\times$11 amplification is an upper bound for prolonged disruptions and a reasonable estimate for acute shocks. More fundamentally, the approach relies on aggregate multi-regional input-output tables rather than on the actual supply chain of each facility. Where facility-specific procurement data are available---bills of materials, qualified vendor lists, logistics routing---they should replace the MRIOT coefficients, yielding sharper estimates of both the amplification and its geographic decomposition. The present results establish the order of magnitude and the direction; facility-level supply chain audits are the natural next step.
 
 \subsubsection*{Physical Risk is Systemic}
 

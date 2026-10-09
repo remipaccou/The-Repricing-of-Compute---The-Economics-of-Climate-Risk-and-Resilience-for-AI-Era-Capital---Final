@@ -1,3 +1,16 @@
 
 # Generated Digital Research cover preview
 /digital-research-cover.pdf
+
+# LaTeX build outputs
+main.aux
+main.bbl
+main.blg
+main.fdb_latexmk
+main.fls
+main.log
+main.xdv
+main.out
+main.toc
+main.pdf
+gen/__pycache__/

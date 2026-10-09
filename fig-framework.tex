@@ -1,0 +1,87 @@
+% ============================================================================
+% fig-framework.tex — Exhibit 6, the ClimVaR framework
+% Same drawing conventions as the microgrid schematic of The Repricing of
+% Hospitality: white sources, light green channels, one dark result block.
+% ============================================================================
+\begin{center}
+\begin{tikzpicture}[
+  x=1mm, y=1mm,
+  font=\fontsize{7.2}{8.6}\selectfont,
+  drv/.style={draw=SEDarkGreen!25, line width=0.5pt, fill=white,
+              text=SEDarkGreen, align=center, inner sep=0pt,
+              minimum height=10mm, text width=30mm},
+  chn/.style={draw=SEGreen, line width=0.6pt, fill=SELightGreen,
+              text=SEDarkGreen, align=center, inner sep=0pt,
+              minimum height=8.6mm, text width=42mm},
+  cfl/.style={draw=SEDarkGreen!40, line width=0.5pt, fill=SELightGray,
+              text=SEDarkGreen, align=center, inner sep=0pt,
+              minimum height=10mm, text width=30mm},
+  eyebrow/.style={font=\displaylight\fontsize{6.6}{8}\selectfont,
+                  text=SEDarkGreen!60, anchor=west},
+  flow/.style={draw=SEGreen, line width=0.8pt,
+               -{Stealth[length=1.8mm,width=1.5mm]}},
+]
+
+\def\W{189}
+
+\node[eyebrow] at (0,57)   {CLIMATE DRIVERS};
+\node[eyebrow] at (44,57)  {RISK CHANNELS};
+\node[eyebrow] at (104,57) {CASH-FLOW LINE};
+\node[eyebrow] at (151,57) {RESULT};
+
+% ------------------------------------------------------------ drivers
+\node[drv] (temp) at (15,43)   {Temperature rise};
+\node[drv] (carb) at (15,26)   {Carbon pricing\\[-0.3mm]
+   {\fontsize{6.2}{7.4}\selectfont\color{SEDarkGreen!60}transition policy}};
+\node[drv] (ext)  at (15,9.5)  {Extreme events\\[-0.3mm]
+   {\fontsize{6.2}{7.4}\selectfont\color{SEDarkGreen!60}flood, wind, fire, drought}};
+
+% ------------------------------------------------------------ channels
+\node[chn] (g) at (65,48) {Cooling costs \quad $\gamma$};
+\node[chn] (x) at (65,37) {Heat productivity \quad $\xi$};
+\node[chn] (c) at (65,26) {Carbon costs \quad CC$^{1,2,3}$};
+\node[chn] (b) at (65,15) {Business interruption \quad $\beta$};
+\node[chn] (d) at (65,4)  {Physical damage \quad $\delta$};
+
+% ------------------------------------------------------------ cash-flow lines
+\node[cfl] (cogs) at (119,37) {COGS increase};
+\node[cfl] (rev)  at (119,15) {Revenue loss};
+\node[cfl] (opex) at (119,4)  {OPEX increase\\[-0.3mm]
+   {\fontsize{6.2}{7.4}\selectfont\color{SEDarkGreen!60}through insurance}};
+
+% ------------------------------------------------------------ result
+\node[fill=SEDarkGreen, text=white, align=center, inner sep=3pt,
+      minimum width=36mm, minimum height=53mm, text width=32mm]
+  (out) at (170,26)
+  {{\strongbold\fontsize{10}{12}\selectfont ClimVaR}\\[2mm]
+   {\fontsize{8}{10}\selectfont $V_0 - V^{cc}$}\\[3mm]
+   {\fontsize{6.8}{8.8}\selectfont Enterprise value lost\\
+    to climate, discounted\\over 25 years at the\\facility's WACC}};
+
+% ------------------------------------------------------------ flows
+\draw[flow] (temp.east) -- (g.west);
+\draw[flow] (temp.east) -- (x.west);
+\draw[flow] (carb.east) -- (c.west);
+\draw[flow] (ext.east)  -- (b.west);
+\draw[flow] (ext.east)  -- (d.west);
+
+\draw[flow] (g.east) -- (cogs.west);
+\draw[flow] (x.east) -- (cogs.west);
+\draw[flow] (c.east) -- (cogs.west);
+\draw[flow] (b.east) -- (rev.west);
+\draw[flow] (d.east) -- (opex.west);
+
+\draw[flow] (cogs.east) -- (out.west |- cogs.east);
+\draw[flow] (rev.east)  -- (out.west |- rev.east);
+\draw[flow] (opex.east) -- (out.west |- opex.east);
+
+% ------------------------------------------------------------ reading line
+\fill[SELightGray] (0,-14) rectangle (\W,-4);
+\fill[SEGreen] (0,-14) rectangle (1.6,-4);
+\node[anchor=west, text=SEDarkGreen, font=\fontsize{7.4}{9}\selectfont]
+  at (5.5,-9) {Each channel lands on one line of the cash-flow statement; the discount rate is held constant.};
+\node[anchor=east, text=SEGreen, font=\strongbold\fontsize{8.2}{10}\selectfont]
+  at (\W-3,-9) {Five channels, one value};
+
+\end{tikzpicture}
+\end{center}

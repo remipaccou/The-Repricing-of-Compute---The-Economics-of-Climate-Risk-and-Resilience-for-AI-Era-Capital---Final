@@ -8,7 +8,7 @@
 % =====================================================================
 % SECTION 1: THE CLIMVAR MODEL
 % =====================================================================
-\subsection*{The ClimVaR Model}
+\subsection*{The ClimVaR Model}\label{toc:model}
 \greensep
 
 \begin{twocolbody}
@@ -43,7 +43,7 @@ $\displaystyle\text{ClimVaR} = \sum_{t=1}^{T+1} \frac{(1-\tau)}{(1+\omega)^t} \l
 
 \begin{twocolbody}
 
-\subsubsection*{What Makes Data Centers Different}
+\subsubsection*{What Makes Data Centers Different}\label{toc:different}
 
 Data centers exhibit characteristics that make climate risk assessment both urgent and methodologically distinctive. Four features drive the calibration of ClimVaR channels to this sector.
 
@@ -53,7 +53,7 @@ Data centers exhibit characteristics that make climate risk assessment both urge
 
 \textbf{Uptime requirements.} 99.99\% availability Service Level Agreements mean business interruption ($\beta$) translates directly into contractual penalties and customer churn. A single hour of unplanned downtime can cost \$100{,}000--\$1M in SLA penalties, lost revenue, and reputational damage.
 
-\textbf{Supply chain concentration.} Critical dependence on geographically concentrated semiconductor fabrication (Taiwan 54\%, South Korea 17\%) and power equipment manufacturing (transformer lead times 12--24 months) amplifies the Leontief propagation effect far beyond what facility-level hazard screening captures.
+\textbf{Business interruption supply chain amplification.} Critical dependence on geographically concentrated semiconductor fabrication (Taiwan 54\%, South Korea 17\%) and power equipment manufacturing (transformer lead times 12--24 months) amplifies the Leontief propagation effect far beyond what facility-level hazard screening captures.
 
 \end{twocolbody}
 
@@ -89,16 +89,15 @@ $\rho$ & Nature capital & \multicolumn{2}{l}{\textit{Not parameterized --- relev
 
 % ---- Framework figure ----
 \exhibitcaption{6}{ClimVaR framework: climate drivers propagate through five risk channels to affect enterprise value.}
-\begin{center}
-\includegraphics[width=\textwidth]{images/exhibit-framework-v2.png}
-\end{center}
+\vspace{2mm}
+\input{fig-framework}
 \exhibitsource{Adapted from Epelbaum (2025). Complete derivation in Appendix~A.}
 
 \begin{twocolbody}
 
 \noindent The general ClimVaR framework defines seven risk channels. Five are parameterized in this analysis. Two---customer shift ($\sigma$, capturing demand migration away from climate-exposed providers) and nature capital ($\rho$, capturing ecosystem service degradation)---remain in the mathematical architecture but are not activated due to insufficient sector-specific calibration data. Their exclusion makes the estimate conservative: both channels, if parameterized, would increase total ClimVaR. The $\rho$ channel is potentially material for facilities using evaporative cooling in water-stressed regions---a gap identified for future parameterization.
 
-\subsubsection*{Shapley decomposition}
+\subsubsection*{Shapley decomposition}\label{toc:shapley}
 
 Business interruption aggregates exposure to multiple hazards that interact non-additively: a facility facing both drought and heat experiences correlated effects exceeding the sum of individual impacts. Simple additive decomposition produces attributions that either fail to sum to total risk or depend arbitrarily on ordering.
 
@@ -116,7 +115,7 @@ $\phi_h(v) = \displaystyle\sum_{S \subseteq H \setminus \{h\}} \frac{|S|!\,(|H|-
 
 Facility-level analysis misses indirect exposure through upstream supply chains. A flood affecting semiconductor fabrication in Taiwan, a hurricane damaging transformer manufacturing on the Gulf Coast, or a drought constraining equipment production---all translate into business interruption for facilities thousands of kilometers distant.
 
-Leontief input-output analysis (Nobel Prize 1973) traces this propagation using OECD\footnote{Organisation for Economic Co-operation and Development.} Multi-Regional Input-Output Tables (2023 vintage, reference year 2020) \citep{miller2009inputoutput}. The Leontief inverse captures the full cascade---not just immediate suppliers, but suppliers of suppliers. The empirical multiplier is $\times$11: for every dollar of direct business interruption, eleven dollars of supply chain value are at risk. At every facility examined, 98--99\% of business interruption risk originates upstream, not on site.
+Leontief input-output analysis (Nobel Prize 1973) traces this propagation using OECD\footnote{Organisation for Economic Co-operation and Development.} Multi-Regional Input-Output Tables (2023 vintage, reference year 2020) \citep{miller2009inputoutput}. The Leontief inverse captures the full cascade---not just immediate suppliers, but suppliers of suppliers. The business interruption supply chain amplification is $\times$11: for every dollar of business interruption arising on site, eleven dollars of business interruption arrive through suppliers. At every facility examined, 98--99\% of business interruption risk originates upstream, not on site.
 
 \end{twocolbody}
 
@@ -127,7 +126,7 @@ At every facility examined, 98--99\% of business interruption risk originates up
 % =====================================================================
 % SECTION 2: DATABASE
 % =====================================================================
-\subsection*{8,572 Facilities, 120 Countries}
+\subsection*{8,572 Facilities, 120 Countries}\label{toc:database}
 \greensep
 
 \begin{twocolbody}
@@ -168,9 +167,9 @@ Rest of World  & 1,293 & 8.5  & 1,379 & 17.1 & 1,440 & 23.2 & 1,624 & 41.6 \\
 
 \clearpage\thispagestyle{chapterstart}
 
-\exhibitcaption{7b}{AI growth scenarios: capacity trajectories with sensitivity to system dynamics parameters.}
+\exhibitcaption{7b}{AI growth scenarios: installed data center capacity to 2050.}
 \begin{center}
-\includegraphics[width=\textwidth]{images/exhibit-scenarios-trajectories.png}
+\includegraphics[width=\textwidth]{images/ex_capacity.pdf}
 \end{center}
 
 \begin{twocolbody}
@@ -189,7 +188,7 @@ Of the 29 financial parameters, 48\% are calibrated from high-confidence public 
 % SECTION 3: SCENARIO ARCHITECTURE
 % =====================================================================
 
-\subsection*{Four Dimensions of Uncertainty}
+\subsection*{Four Dimensions of Uncertainty}\label{toc:scenarios}
 \greensep
 
 \begin{twocolbody}
