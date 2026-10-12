@@ -52,7 +52,7 @@
 
 \noindent The installed base of 8{,}572 data centers carries \textbf{\$388 billion} in climate-related value at risk---38.3\% of enterprise value under the BAU pathway. With prospective AI infrastructure, exposure rises to \textbf{\$1.0--3.7 trillion}, depending on the growth scenario. Even the most conservative pathway exceeds \$1 trillion. To put this in perspective: the installed-base figure alone is larger than the annual revenue of every listed data center operator combined.
 
-This is why ClimVaR should be read as a measure of systematic mispricing. A traditional DCF assumes that cooling costs, carbon prices, outages, and physical damages remain within the historical range embedded in past cash flows. Climate-adjusted DCF removes that assumption. The 38.3\% gap is therefore not a tail event; it is the median repricing implied by the BAU/MEAN pathway.
+This is why ClimVaR should be read as a measure of systematic mispricing. A traditional DCF assumes that cooling costs, carbon prices, outages, and physical damages remain within the historical range embedded in past cash flows. Climate-adjusted DCF removes that assumption. The 38.3\% gap is the median repricing implied by the BAU/MEAN pathway.
 
 \vspace{2mm}
 
@@ -62,7 +62,7 @@ This is why ClimVaR should be read as a measure of systematic mispricing. A trad
 
 \noindent Exposure is not evenly distributed. Europe and China reach 53--56\% ClimVaR intensity, while the United States stands at 28\%---a twofold gap that reflects not just geography, but different channel structures. Business interruption dominates in the United States, carbon in Europe, and physical damage in Asia-Pacific. A single global reading of ``data center climate risk'' therefore obscures the real levers of action.
 
-Just as importantly, \textbf{risk intensity increases with AI scale}. Installed-base intensity is 38\%; with AI infrastructure, it rises to 51\% (LTG), 59\% (SAI), and 66\% (AWB). This is not a simple scaling effect. It reflects a deeper shift in portfolio composition, where physical exposure becomes increasingly dominant as compute expands.
+Just as importantly, \textbf{risk intensity increases with AI scale}. Installed-base intensity is 38\%; with AI infrastructure, it rises to 51\% (LTG), 59\% (SAI), and 66\% (AWB). The rise comes from a shift in portfolio composition: physical exposure becomes increasingly dominant as compute expands.
 
 \end{twocolbody}
 
@@ -77,7 +77,7 @@ Just as importantly, \textbf{risk intensity increases with AI scale}. Installed-
 \begin{center}
 \includegraphics[width=\textwidth]{images/ex_sankey.pdf}
 \end{center}
-\exhibitsource{Ribbon width proportional to US\$ value. Channel and scope totals: V8 model results. Hazard totals: Shapley attribution. The hazard-to-channel split of wind and flood is indicative, set to close each channel total; ``Unattributed'' is the gap between the published hazard totals and the channel totals. BAU/MEAN, installed base.}
+\exhibitsource{Ribbon width proportional to US\$ value. Hazard totals and the direct-operation versus supply-chain split are the model allocation of the full US\$388B. Wind is US\$60.4B through the supply chain and US\$7.2B through direct operations; flood is US\$37.4B and US\$85.0B. V8 model results, BAU/MEAN, installed base.}
 
 \begin{twocolbody}
 
@@ -87,7 +87,7 @@ Just as importantly, \textbf{risk intensity increases with AI scale}. Installed-
 
 \noindent Exhibit~11 makes visible the mechanism that the aggregate figure of \$388~billion tends to obscure. Climate risk does not arrive at the balance sheet in the abstract. It passes through a sequence: hazards strike physical systems, physical systems disrupt operations, and those disruptions are translated into discounted cash-flow losses. What the transmission map shows is therefore not an illustration but the architecture of the loss itself.
 
-On the left, seven hazards are ranked by contribution. Tropical wind dominates, followed by extreme heat and river flood, while carbon pricing appears as a transition hazard with a weight comparable to the largest physical drivers. This ordering is already instructive. A naive reading of data-center exposure might expect flood to dominate, because flood is the most visible and the most intuitively destructive hazard. Yet tropical wind ranks first because its effects travel further: not only through direct site exposure, but through semiconductor fabrication, electrical equipment manufacturing, logistics corridors, and other supply-chain dependencies whose disruption propagates across the portfolio.
+On the left, six hazards carry the full US\$388B. Flood is the largest (US\$122B), followed by carbon pricing (US\$107B), extreme heat (US\$75B) and wind (US\$68B); drought (US\$14B) and fire (US\$2B) are small. In the middle, these hazards aggregate into the five channels. Wind splits: US\$60.4B joins drought and US\$37.4B of flood in business interruption and continues into the supply chain, while US\$7.2B of wind stays in business interruption and exits to direct operations. The remaining flood (US\$85B) and fire feed physical damage. Carbon pricing is the carbon-cost channel. Extreme heat splits into cooling (US\$73B) and heat productivity (US\$2B).
 
 \vspace{5mm}
 
@@ -95,7 +95,7 @@ On the left, seven hazards are ranked by contribution. Tropical wind dominates, 
 
 \vspace{1mm}
 
-\noindent On the right, hazards are aggregated into risk channels. Business interruption is the largest channel, ahead of carbon costs, physical damages, and cooling penalties. This matters because the ranking of channels is not the ranking of hazards: a single hazard can contribute to several channels simultaneously, and a single channel can be fed by several hazards at once. Tropical wind, for instance, contributes both to business interruption and to physical damage; extreme heat drives cooling stress through rising ambient temperatures. The map therefore formalizes the non-additivity of climate risk.
+\noindent On the right, the five channels are traced to where the loss arises. US\$218B (56\%) arrives through the upstream supply chain and US\$169B (44\%) through direct operations. Carbon costs and most of business interruption travel upstream. Physical damage, cooling and heat productivity land on the facility. The ranking of hazards is therefore not the ranking of exposure points: a site-level hazard screen sees less than half of the loss.
 
 This is also why Shapley decomposition is essential to the framework. Without it, one would either double-count the contribution of a hazard that affects several channels, or collapse distinct mechanisms into a single undifferentiated estimate---both analytically fatal for adaptation planning. The model does not merely say that climate risk is large; it shows how it is transmitted, through which levers it becomes financially material, and therefore where adaptation can act with the greatest force.
 
@@ -160,7 +160,7 @@ Heat productivity ($\xi$) & 2.4 & 1\% & Worker/equipment efficiency loss \\
 
 \vspace{1mm}
 
-\noindent Why does tropical wind rank first among hazards, ahead of flood? The answer lies in the distinction between severity and reach. River flood inflicts catastrophic damage at exposed sites but affects only facilities in floodplains. Tropical wind propagates through supply chains serving the entire portfolio: a typhoon disrupting semiconductor fabrication in Taiwan degrades every facility depending on those inputs, regardless of location. At portfolio level, a hazard touching many facilities indirectly outweighs one devastating a few directly. The Sankey in Exhibit~11 makes this visible: the tropical-wind ribbon is wide because its consequences travel further through the network.
+\noindent Flood is the largest hazard, but wind is the one that travels. The distinction is between severity and reach. Of flood's US\$122B, US\$85B feeds physical damage and lands on the facility; US\$37B passes through business interruption into the supply chain. Wind is the reverse: of its US\$68B, US\$60.4B runs through business interruption into the supply chain, and US\$7.2B stays on site as direct operations. A typhoon disrupting semiconductor fabrication in Taiwan degrades every facility depending on those inputs, regardless of its own location. Exhibit~11 shows both ribbons.
 
 \vspace{3mm}
 
@@ -328,6 +328,19 @@ The framework matters beyond the headline estimate because it offers a white-box
 
 \end{twocolbody}
 
+\vspace{2mm}
+\exhibitcaption{16}{ClimVaR risk composition by country: which channel dominates where.}
+\begin{center}
+\includegraphics[width=0.82\textwidth]{images/ex_map_shares.pdf}
+\end{center}
+\exhibitsource{Share of each channel in national ClimVaR. All panels use the same scale, and shares within a country sum to 100\%. Grey: no facility in the database. BAU/MEAN, installed base.}
+
+\begin{twocolbody}
+
+\noindent Exhibit~16 shows what the loss is made of, country by country. Business interruption accounts for a large share across much of the Americas. Asset damage rises through parts of South Asia and Africa. Carbon and energy costs take the larger share in several higher-latitude markets, including parts of Europe and Canada, while heat productivity stays small almost everywhere. Countries with a similar intensity can still call for different first levers.
+
+\end{twocolbody}
+
 % ==============================================================================
 % FINDING 3 — PAGE 1 of 2
 % From geography to amplification: AI makes it worse
@@ -345,7 +358,7 @@ The framework matters beyond the headline estimate because it offers a white-box
 
 \vspace{1mm}
 
-\noindent The AI build-out does not replicate the risk profile of the installed base---it inverts it. On legacy facilities, carbon costs represent 28\% of total ClimVaR and physical channels 72\%. On AI-era facilities, physical channels account for 93--94\% while carbon drops to 6--7\%. The inversion is not gradual: even the most conservative growth scenario (Limits to Growth, adding 63~GW) pushes the physical share above 93\%. 
+\noindent The AI build-out does not replicate the risk profile of the installed base---it amplifies it. On legacy facilities, carbon costs represent 28\% of total ClimVaR and physical channels 72\%. On AI-era facilities, physical channels account for 93--94\% while carbon drops to 6--7\%. The amplification is abrupt: even the most conservative growth scenario (Limits to Growth, adding 63~GW) pushes the physical share above 93\%. 
 
 This has a direct consequence that no sustainability strategy focused on renewable procurement can resolve. Net-zero commitments address the carbon component---which on AI infrastructure represents less than one-tenth of the exposure. For operators who have built their climate strategy around Scope~2 reductions, the centre of gravity of risk has moved somewhere their existing toolkit barely touches.
 
@@ -364,7 +377,7 @@ Under the Abundance Without Boundaries scenario, several regional portfolios app
 \end{twocolbody}
 
 \vspace{2mm}
-\exhibitcaption{16}{Channel decomposition: installed base versus AI-tier facilities (BAU/MEAN).}
+\exhibitcaption{17}{Channel decomposition: installed base versus AI-tier facilities (BAU/MEAN).}
 
 \begin{center}
 \datatablesetup
@@ -407,14 +420,14 @@ For investors and operators, the implication is straightforward. A climate strat
 \sectionsubtitle{Across all AI scenarios, proactive adaptation bends but does not erase the risk curve}
 \greensep
 
-\exhibitcaption{17}{ClimVaR trajectories by AI growth scenario, with and without proactive adaptation (installed base + AI-tier).}
+\exhibitcaption{18}{ClimVaR trajectories by AI growth scenario, with and without proactive adaptation (installed base + AI-tier).}
 \begin{center}
 \includegraphics[width=1\textwidth]{images/ex_ribbons.pdf}
 \end{center}
 \exhibitsource{Baseline (solid) and proactive adaptation (dashed) under three AI growth scenarios; the shaded band between them is the value adaptation protects. End points are V8 model results; the paths between 2026 and 2050 are indicative. Values cumulative over asset lifetimes.}
 
 \begin{pullquote}
-The AI build-out does not replicate the installed base's risk profile---it inverts it. Net-zero commitments address 28\% of the exposure on legacy assets but less than 7\% on AI infrastructure. Physical resilience, not energy sourcing, is the binding constraint.
+The AI build-out does not replicate the installed base's risk profile---it amplifies it. Net-zero commitments address 28\% of the exposure on legacy assets but less than 7\% on AI infrastructure. Physical resilience, not energy sourcing, is the binding constraint.
 \end{pullquote}
 
 \begin{twocolbody}
@@ -423,7 +436,7 @@ The AI build-out does not replicate the installed base's risk profile---it inver
 
 \vspace{1mm}
 
-\noindent Exhibit~17 shows how the combined portfolio evolves once AI growth is layered on top of the installed base. All scenarios start from US\$388B of ClimVaR on 90.8~GW and diverge sharply by 2050: about US\$1.0~trillion under Limits to Growth, US\$1.7~trillion under Sustainable AI, and US\$3.7~trillion under Abundance Without Boundaries, with proactive adaptation bending each curve downwards by hundreds of billions.
+\noindent Exhibit~18 shows how the combined portfolio evolves once AI growth is layered on top of the installed base. All scenarios start from US\$388B of ClimVaR on 90.8~GW and diverge sharply by 2050: about US\$1.0~trillion under Limits to Growth, US\$1.7~trillion under Sustainable AI, and US\$3.7~trillion under Abundance Without Boundaries, with proactive adaptation bending each curve downwards by hundreds of billions.
 
 Two features matter. The curves are convex: most of the increase in ClimVaR occurs between 2030 and 2045, when AI capacity scales fastest. And as scenarios become more aggressive, the gap between Baseline and Proactive widens: in Abundance Without Boundaries, proactive measures avoid over US\$1.1~trillion of cumulative ClimVaR by 2050, yet about US\$2.5~trillion of residual exposure remains, underscoring that adaptation cannot restore a pre-AI risk profile.
 
@@ -451,7 +464,7 @@ A second message is methodological. The \(\times 2.6\) amplification factor mixe
 \end{twocolbody}
 
 \vspace{2mm}
-\exhibitcaption{18}{Adaptation value creation---installed base, BAU/MEAN pathway.}
+\exhibitcaption{19}{Adaptation value creation---installed base, BAU/MEAN pathway.}
 \begin{center}
 \datatablesetup
 \begin{tabularx}{\textwidth}{l >{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X >{\raggedleft\arraybackslash}X}
@@ -471,7 +484,7 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 \end{center}
 
 \vspace{2mm}
-\exhibitcaption{19}{The adaptation effect: US\$150 billion in net protected value, channel by channel.}
+\exhibitcaption{20}{The adaptation effect: US\$150 billion in net protected value, channel by channel.}
 \begin{center}
 \includegraphics[width=\textwidth]{images/ex_butterfly.pdf}
 \end{center}
@@ -488,7 +501,7 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 % ==============================================================================
 
 \clearpage
-\exhibitcaption{20}{Channel-by-channel waterfall from Baseline to Proactive.}
+\exhibitcaption{21}{Channel-by-channel waterfall from Baseline to Proactive.}
 \begin{center}
 \includegraphics[width=\textwidth]{images/ex_waterfall.pdf}
 \end{center}
@@ -501,7 +514,7 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 \end{twocolbody}
  
 \vspace{2mm}
-\exhibitcaption{21}{Marginal abatement cost of climate risk: all ten actions below break-even.}
+\exhibitcaption{22}{Marginal abatement cost of climate risk: all ten actions below break-even.}
 \begin{center}
 \includegraphics[width=\textwidth]{images/ex_macc.pdf}
 \end{center}
@@ -527,7 +540,7 @@ China  & 111 &  86 & 24 &  67 & 44 & 40\% \\
 
 The question is no longer whether climate risk is material for data center portfolios. It is how fast operators convert diagnosis into capital allocation.
 
-\vspace{5mm}
+\vspace{2.5mm}
 
 {\color{SEGreen}\textbf{Adaptation as a real option on Net Zero}}
 
@@ -537,7 +550,7 @@ The question is no longer whether climate risk is material for data center portf
 
 This asymmetry gives adaptation the payoff structure of a real option. The cost is paid once, at current prices; the benefit scales with the stringency of future regulation. In a world where the direction of climate policy is clear but the speed is not, this convexity is worth more than a point forecast.
 
-\vspace{5mm}
+\vspace{2.5mm}
 
 {\color{SEGreen}\textbf{Matching strategy to portfolio: Selective versus Proactive}}
 
@@ -559,10 +572,10 @@ All ten adaptation levers create net value. The cheapest resilience is designed 
 \sectionsubtitle{The clock: how much of the loss arrives in the next five years}
 \greensep
 
-\exhibitcaption{22}{ClimVaR falling in the next five years, by country.}
+\exhibitcaption{23}{ClimVaR falling in the next five years, by country.}
 \begin{center}
-\includegraphics[width=0.86\textwidth]{images/ex_map_temporal_pct.pdf}\\[3mm]
-\includegraphics[width=0.86\textwidth]{images/ex_map_temporal_abs.pdf}
+\includegraphics[width=0.74\textwidth]{images/ex_map_temporal_pct.pdf}\\[1.5mm]
+\includegraphics[width=0.74\textwidth]{images/ex_map_temporal_abs.pdf}
 \end{center}
 \exhibitsource{Top: share of each country's ClimVaR that falls within the next five years. Bottom: the same loss in US\$ billions. Grey: no facility in the database. BAU/MEAN, installed base.}
 
@@ -589,7 +602,7 @@ This is the timing argument for proactive adaptation. A loss that arrives within
 \end{twocolbody}
 
 \vspace{2mm}
-\exhibitcaption{23}{Three prospective AI facilities: site characteristics and ClimVaR decomposition (BAU/MEAN).}
+\exhibitcaption{24}{Three prospective AI facilities: site characteristics and ClimVaR decomposition (BAU/MEAN).}
 
 \begin{center}
 \datatablesetup
@@ -622,7 +635,7 @@ Heat productivity         & \$11M (1\%)         & \$6M ($<$1\%)      & \$4M (1\%
 
 \subsubsection*{Site~A (US) — The Supply Chain Problem}
 
-\noindent The largest announced AI facility carries 46.5\% ClimVaR intensity. Business interruption (43\%) and cooling (37\%) dominate; carbon and heat are marginal. The Shapley decomposition shows 56\% of BI risk comes from tropical wind propagating through semiconductor supply chains. A facility in the US South derives most BI exposure from cyclones thousands of kilometers away. Direct on-site hazards: $<$1\% of BI.
+\noindent The largest announced AI facility carries 46.5\% ClimVaR intensity. Business interruption (43\%) and cooling (37\%) dominate; carbon and heat are marginal. The Shapley decomposition shows 56\% of BI risk comes from tropical wind propagating through semiconductor supply chains. A facility in the US South derives most BI exposure from cyclones thousands of kilometers away. Direct on-site hazards account for less than 10\% of BI.
 
 \subsubsection*{Site~B (France) — The Flood Trap}
 
@@ -640,7 +653,7 @@ Heat productivity         & \$11M (1\%)         & \$6M ($<$1\%)      & \$4M (1\%
 
 \clearpage\thispagestyle{chapterstart}
 
-\exhibitcaption{24}{Hazard attribution (Shapley) and propagation pathway (Leontief) at three sites.}
+\exhibitcaption{25}{Hazard attribution (Shapley) and propagation pathway (Leontief) at three sites.}
 
 \begin{center}
 \datatablesetup
@@ -655,8 +668,8 @@ Storm (convective)      & 24\% & 22\% & 27\% \\
 Drought                 & 15\% & 23\% & 8\%  \\
 \midrule
 \multicolumn{4}{l}{\textbf{BI: propagation pathway (Leontief)}} \\
-Direct operations       & $<$1\% & 2\%  & 2\%  \\
-Supply chain (indirect) & $>$99\% & 98\% & 98\% \\
+Direct operations       & $<$10\% & $<$10\% & $<$10\% \\
+Supply chain (indirect) & $>$90\% & $>$90\% & $>$90\% \\
 \midrule
 \multicolumn{4}{l}{\textbf{Damage: dominant hazard}} \\
                         & Fire (97\%) & River flood (100\%) & Fire (79\%) \\
@@ -667,11 +680,11 @@ Supply chain (indirect) & $>$99\% & 98\% & 98\% \\
 
 \exhibitsource{Shapley: 32 coalitions per facility. Leontief: OECD MRIOT 2023.}
 
-\exhibitcaption{25}{Three sites, three risk structures: channel decomposition at facility level.}
+\exhibitcaption{26}{Three sites, three risk structures: channel decomposition at facility level.}
 \begin{center}
 \includegraphics[width=\textwidth]{images/ex_cases.pdf}
 \end{center}
-\exhibitsource{Share of site-level ClimVaR by channel, from Exhibit~23. Site~A leans on interruption and cooling, Site~B on damage, Site~C spreads across interruption, carbon and cooling.}
+\exhibitsource{Share of site-level ClimVaR by channel, from Exhibit~24. Site~A leans on interruption and cooling, Site~B on damage, Site~C spreads across interruption, carbon and cooling.}
 
 % Advisory Services box moved to standalone page after Chapter IV — see advisory-box.tex
 
@@ -694,11 +707,13 @@ The \$388B figure represents a lower bound on total economic exposure. The frame
 
 The gap between 38\% enterprise value erosion and zero in standard DCF valuations quantifies the mispricing. Concurrent work in portfolio management confirms this gap from the asset allocation side: \citet{luciani2026} show that physical climate risk lacks the standardized anchor metric equivalent to carbon intensity, and that reducing portfolio-level physical exposure beyond 10\% destabilizes diversified portfolios---the facility-level ClimVaR framework developed here is designed to provide this missing metric.
 
+In a standard DCF the climate term is zero. Where analysts allow for climate at all, they usually do it blind, by tinkering with the WACC. ClimVaR opens that black box: the discount rate stays the ordinary cost of capital, and the climate loss is written, channel by channel, into the cash flows.
+
 \subsubsection*{Business Interruption Supply Chain Amplification}
 
-The $\times$11 business interruption supply chain amplification, the ratio of supply chain to direct business interruption, is the most consequential finding for risk management practice. At all three case study sites, 98--99\% of business interruption propagates through supply chains rather than from direct on-site hazards. Taiwan accounts for over 60\% of advanced semiconductor fabrication; large power transformers carry 12--24 month lead times; high-bandwidth memory production concentrates in South Korea. A single typhoon disrupting TSMC operations would propagate through every data center in the global portfolio via the Leontief inverse \citep{verdantix2024}.
+The $\times$11 business interruption supply chain amplification, the ratio of supply chain to direct business interruption, is one of the most consequential findings for risk management practice. At all three case study sites, more than 90\% of business interruption propagates through supply chains rather than from direct on-site hazards. Taiwan accounts for over 60\% of advanced semiconductor fabrication; large power transformers carry 12--24 month lead times; high-bandwidth memory production concentrates in South Korea. A single typhoon disrupting TSMC operations would propagate through every data center in the global portfolio via the Leontief inverse \citep{verdantix2024}.
 
-The Leontief framework assumes fixed technical coefficients---firms cannot reroute sourcing under stress. Long-duration disruptions are partially attenuated by adaptive behavior not captured in the model. The $\times$11 amplification is an upper bound for prolonged disruptions and a reasonable estimate for acute shocks. More fundamentally, the approach relies on aggregate multi-regional input-output tables rather than on the actual supply chain of each facility. Where facility-specific procurement data are available---bills of materials, qualified vendor lists, logistics routing---they should replace the MRIOT coefficients, yielding sharper estimates of both the amplification and its geographic decomposition. The present results establish the order of magnitude and the direction; facility-level supply chain audits are the natural next step.
+The Leontief framework assumes fixed technical coefficients---firms cannot reroute sourcing under stress. Long-duration disruptions are partially attenuated by adaptive behavior not captured in the model. The $\times$11 amplification is an upper bound for prolonged disruptions and a reasonable estimate for acute shocks. More fundamentally, the approach relies on aggregate multi-regional input-output tables rather than on the actual supply chain of each facility. Where facility-specific procurement data are available---bills of materials, qualified vendor lists, logistics routing---they should replace the MRIOT coefficients, yielding sharper estimates of both the amplification and its geographic decomposition. The present results establish the order of magnitude and the direction; facility-level supply chain audits are the natural next step. Adaptive regional input-output models relax the fixed-coefficient assumption and allow firms to adjust after a shock \citep{hallegatte2008ario}. Agent-based supply-chain models then trace how disruption travels once those audits replace the aggregate table with firm-level links \citep{colon2021supply}.
 
 \subsubsection*{Physical Risk is Systemic}
 

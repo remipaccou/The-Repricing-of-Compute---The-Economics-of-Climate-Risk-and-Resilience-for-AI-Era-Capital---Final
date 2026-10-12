@@ -1,49 +1,49 @@
-"""Exhibit 11 — the transmission map: hazard, risk channel, scope of the loss.
+"""Exhibit 11 — fine hazards, five channels, where the loss arises.
 
-Channel and scope totals: ClimVaR_Results_V8, BAU/MEAN, installed base.
-Hazard totals: as published in the paper (Shapley attribution). The V8 workbook
-does not hold the hazard-by-channel matrix, so hazard-to-channel ribbons follow
-the model's mapping rules (carbon pricing to carbon costs, heat to cooling and
-heat productivity, wildfire to damage, drought to interruption) and split wind
-and flood between interruption and damage to close each channel total. The
-residual between the published hazard totals and the channel totals is shown
-as "Unattributed".
+Amounts are the driver-to-scope bands in sankey_repricing.tex (US$387.5B,
+nothing left over). Each hazard keeps the direct-operation and supply-chain
+split measured there. Wind is US$60.4B through business interruption into
+the supply chain and US$7.2B through business interruption into direct
+operations. Flood is US$37.4B supply chain and US$85.0B direct operations.
 """
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
 import numpy as np
 from sestyle import SE, accentbar, titleblock, save
 
-TOTAL = 387.6
+TOTAL = 387.5
 
 C = {
-    "Carbon pricing": "#AEBDB4", "Wind": "#1F8C32", "Extreme heat": "#8FD9A0",
-    "River flood": "#3DCD58", "Coastal flood": "#7FBFA3", "Drought": "#C4E7CE",
-    "Wildfire": "#0A2F24", "Unattributed": "#D5DBD7",
+    "Flood": "#3DCD58", "Carbon pricing": "#AEBDB4", "Extreme heat": "#8FD9A0",
+    "Wind": "#1F8C32", "Drought": "#C4E7CE", "Fire": "#0A2F24",
     "Business interruption": "#245C46", "Carbon costs": "#AEBDB4",
     "Physical damage": "#3DCD58", "Cooling": "#8FD9A0", "Heat productivity": "#C4E7CE",
     "Direct operations": "#5E8F79", "Upstream supply chain": "#0A2F24",
 }
 
-COL1 = [("Carbon pricing", 107.1), ("Wind", 89.0), ("Extreme heat", 73.0),
-        ("River flood", 49.0), ("Coastal flood", 24.0), ("Drought", 18.0),
-        ("Wildfire", 14.0), ("Unattributed", 13.5)]
-COL2 = [("Business interruption", 121.4), ("Carbon costs", 107.1),
-        ("Physical damage", 84.0), ("Cooling", 72.6), ("Heat productivity", 2.4)]
-COL3 = [("Direct operations", 170.0), ("Upstream supply chain", 217.6)]
+COL1 = [("Wind", 67.6), ("Drought", 13.6), ("Flood", 122.4),
+        ("Carbon pricing", 107.0), ("Fire", 1.9), ("Extreme heat", 75.0)]
+COL2 = [("Business interruption", 118.6), ("Carbon costs", 107.0),
+        ("Physical damage", 86.9), ("Cooling", 72.6), ("Heat productivity", 2.4)]
+COL3 = [("Upstream supply chain", 218.3), ("Direct operations", 169.2)]
 
-L12 = [("Carbon pricing", "Carbon costs", 107.0), ("Unattributed", "Carbon costs", 0.1),
-       ("Wind", "Business interruption", 60.0), ("Wind", "Physical damage", 29.0),
-       ("Extreme heat", "Cooling", 70.6), ("Extreme heat", "Heat productivity", 2.4),
-       ("River flood", "Business interruption", 21.0), ("River flood", "Physical damage", 28.0),
-       ("Coastal flood", "Business interruption", 11.0), ("Coastal flood", "Physical damage", 13.0),
-       ("Drought", "Business interruption", 18.0), ("Wildfire", "Physical damage", 14.0),
-       ("Unattributed", "Business interruption", 11.4),
-       ("Unattributed", "Cooling", 2.0)]
-L23 = [("Business interruption", "Direct operations", 10.9),
-       ("Business interruption", "Upstream supply chain", 110.5),
-       ("Carbon costs", "Upstream supply chain", 107.1),
-       ("Physical damage", "Direct operations", 84.0),
+# Link order is top-to-bottom within each bar, so wind's lower slice
+# (US$7.2B) is the whole of business interruption that exits to direct
+# operations, and its upper slice (US$60.4B) exits to the supply chain.
+L12 = [("Wind", "Business interruption", 60.4),
+       ("Drought", "Business interruption", 13.6),
+       ("Flood", "Business interruption", 37.4),
+       ("Wind", "Business interruption", 7.2),
+       ("Flood", "Physical damage", 85.0),
+       ("Fire", "Physical damage", 1.9),
+       ("Carbon pricing", "Carbon costs", 107.0),
+       ("Extreme heat", "Cooling", 72.6),
+       ("Extreme heat", "Heat productivity", 2.4)]
+L23 = [("Business interruption", "Upstream supply chain", 111.4),
+       ("Business interruption", "Direct operations", 7.2),
+       ("Carbon costs", "Upstream supply chain", 106.9),
+       ("Carbon costs", "Direct operations", 0.1),
+       ("Physical damage", "Direct operations", 86.9),
        ("Cooling", "Direct operations", 72.6),
        ("Heat productivity", "Direct operations", 2.4)]
 
@@ -125,7 +125,9 @@ def label(pos, x, ha, minsep, anchor, halo=False, lo=3.0):
         kw = dict(path_effects=HALO) if halo else {}
         ax.text(x, y + 2.0, name, ha=ha, va="center", fontsize=8.4,
                 fontweight="semibold", color=SE["dark"], zorder=6, **kw)
-        ax.text(x, y - 2.6, f"US${v:.0f}B    {v / TOTAL * 100:.0f}%",
+        amount = f"{v:.0f}" if abs(v - round(v)) < 0.05 else f"{v:.1f}"
+        share = f"{v / TOTAL * 100:.1f}" if v / TOTAL < 0.01 else f"{v / TOTAL * 100:.0f}"
+        ax.text(x, y - 2.6, f"US${amount}B    {share}%",
                 ha=ha, va="center", fontsize=7.3, color=SE["text2"],
                 zorder=6, **kw)
 
